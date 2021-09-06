@@ -1,5 +1,5 @@
-# ET-Jekyll
-A minimal Jekyll theme inspired by <a href="https://github.com/edwardtufte/tufte-css">Tufte CSS</a>
+# v715.github.io
 
-### Live Demo
-A live demo with detailed instructions can be found <a href="https://et-jekyll.netlify.com/et-jekyll-theme/">here</a>.
+Vivek Gopalakrishnan's academic blog.
+
+Built with [ET-Jekyll](https://github.com/bradleytaunt/ET-Jekyll), a minimal Jekyll theme inspired by [Tufte CSS](https://github.com/edwardtufte/tufte-css).
