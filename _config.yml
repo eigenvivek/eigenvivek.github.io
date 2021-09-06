@@ -1,11 +1,10 @@
 ###########
 # site.title
 
-title: ET-Jekyll Theme
+title: Vivek Gopalakrishnan
 description: A minimal Jekyll theme inspired by Tufte CSS
-url: "https://et-jekyll.netlify.app"
+url: "https://vivekg.dev"
 host: 0.0.0.0
-
 
 #########################
 # more settings
@@ -15,7 +14,27 @@ markdown: kramdown
 compress_html:
   clippings: all
   comments: [""]
-  endings: [html, head, body, li, dt, dd, rt, rp, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th]
+  endings:
+    [
+      html,
+      head,
+      body,
+      li,
+      dt,
+      dd,
+      rt,
+      rp,
+      optgroup,
+      option,
+      colgroup,
+      caption,
+      thead,
+      tbody,
+      tfoot,
+      tr,
+      td,
+      th,
+    ]
   profile: false
   blanklines: false
   ignore:
@@ -23,7 +42,7 @@ compress_html:
 
 sass:
   sass_dir: css
-  style:    compressed
+  style: compressed
 
 baseurl: ""
 permalink: pretty
@@ -31,5 +50,5 @@ timezone: America/New_York
 future: false
 
 exclude:
-- README.md
-- LICENSE.md
+  - README.md
+  - LICENSE.md
