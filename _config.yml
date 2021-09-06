@@ -1,0 +1,35 @@
+###########
+# site.title
+
+title: ET-Jekyll Theme
+description: A minimal Jekyll theme inspired by Tufte CSS
+url: "https://et-jekyll.netlify.app"
+host: 0.0.0.0
+
+
+#########################
+# more settings
+
+markdown: kramdown
+
+compress_html:
+  clippings: all
+  comments: [""]
+  endings: [html, head, body, li, dt, dd, rt, rp, optgroup, option, colgroup, caption, thead, tbody, tfoot, tr, td, th]
+  profile: false
+  blanklines: false
+  ignore:
+    envs: []
+
+sass:
+  sass_dir: css
+  style:    compressed
+
+baseurl: ""
+permalink: pretty
+timezone: America/New_York
+future: false
+
+exclude:
+- README.md
+- LICENSE.md
