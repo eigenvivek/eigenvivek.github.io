@@ -42,7 +42,7 @@ such that the variance of $$y_i$$ is maximized subject to
 
 $$\mathrm{Var}(y_1) \geq \cdots \geq \mathrm{Var}(y_d) > 0 \,.$$
 
-We can derive an important characterization of the PCs from this result:
+We can derive an important characterization of the PCs from this definition:
 
 **Lemma 1.** $$\mathrm{Var}(y_i) = u_i^* \Sigma_x u_i \,.$$
 \
@@ -73,7 +73,7 @@ $$\Sigma_x^* = (\mathbb{E}[xx^*] - \mathbb{E}[x]\mathbb{E}[x^*])^* = \mathbb{E}[
 
 ## Proving the Courant--Fischer Theorem
 
-The Courant--Fischer Theorem provides a bound on all possible quadratic forms of a Hermtian matrix in a subspace using the eigenvalues of the matrix.
+The Courant--Fischer Theorem provides a very useful bound on all possible quadratic forms of a Hermtian matrix in a subspace using the eigenvalues of the matrix.
 
 **Theorem 1 (Courant--Fischer).**
 Let $$A \in M_n$$ be a Hermitian matrix with eigenvalues $$\lambda_1 \geq \cdots \geq \lambda_n$$ and corresponding eigenvectors $$u_1, \dots, u_n$$.
@@ -107,11 +107,13 @@ $$ \begin{align*}
 
 with equality if $$w = u_k \Rightarrow \cal V^\perp = \mathrm{span}\{u_1, \dots, u_{k-1}\} \,.$$
 
-**Corollary 1.** As a direct consequence of the Courant--Fischer Theorem, for a matrix $$A$$ as in Theorem 1,
+**Corollary 1.** As a direct consequence of the Courant--Fischer Theorem, for any matrix $$A$$ as in Theorem 1,
 
 $$ \lambda_k = 
 \max_{x \perp \{u_1, \dots, u_{k-1}\}} 
 \frac{x^* A x}{x^* x} \,. $$
+
+This vastly simplifies the constrained optimization problem presented in Lemma 1 -- no need for Lagrange multipliers!
 
 ## Deriving PCA
 
@@ -125,8 +127,8 @@ $$ y_i = \langle u_i, x \rangle \,.$$
 $$ \max_{u \in \mathbb{C}^n} \mathrm{Var}(y_1) = \max_{u \in \mathbb{C}^n} \frac{u^* \Sigma_x u}{u^* u} = \lambda_1 \,.$$
 
 That is, the first principal component of $$x$$ is in the direction of the eigenvector corresponding to the largest eigenvalue.
-Recall that, by definition, the principal components are supposed to be mutually uncorrelated.
-This implies that, unless $$\Sigma_x$$ is the zero matrix, $$u_1 \perp u_2$$.<span class="sidenote-number"></span>
+Recall that, by definition, the principal components are mutually uncorrelated.
+This implies that, unless $$\Sigma_x$$ is the zero matrix, $$\lambda_1 > 0 \Rightarrow u_1 \perp u_2$$.<span class="sidenote-number"></span>
 <span class="sidenote">
     By the definition of uncorrelatedness,
     $$ \begin{align*}
@@ -144,20 +146,20 @@ Therefore,
 
 $$ \max_{u \perp \{u_1\}} \mathrm{Var}(y_2) = \max_{u \perp \{u_1\}} \frac{u^* \Sigma_x u}{u^* u} = \lambda_2 \,.$$
 
-By induction, we can show that the uncorrelatedness of the principal components implies orthogonality, continuing to enable use of the Courant--Fischer Theorem. Thus, PCA has been derived!!
+By induction, we can show that the uncorrelatedness of the principal components implies the orthogonality of their underlying vectors, continuing to enable use of the Courant--Fischer Theorem. Thus, PCA has been derived!
 
 ## Technical Considerations
 
-- What if $$\lambda_i$$ is complex? Which eigenvalue is "largest" in this case?
+*What if $$\lambda_i$$ is complex? Which eigenvalue is "largest" in this case?*
 
-> It is true that there is no total ordering on the complex numbers (see [here](https://math.stackexchange.com/questions/487997/total-ordering-on-complex-numbers)), so there would be no "largest" eigenvalue, as such... However, we have shown that $$\Sigma_x$$ is Hermitian, so $$\sigma(\Sigma) \subset \mathbb{R}\,.$$<span class="sidenote-number"></span>
+It is true that there is no total ordering on the complex numbers (see [here](https://math.stackexchange.com/questions/487997/total-ordering-on-complex-numbers)), so there would be no "largest" eigenvalue, as such... However, we have shown that $$\Sigma_x$$ is Hermitian, so $$\sigma(\Sigma) \subset \mathbb{R}\,.$$<span class="sidenote-number"></span>
 <span class="sidenote">
     This is because Hermitian matrices are unitary diagonalizable, and the diagonal matrix, which is comprised of the eigenvalues, is itself Hermitian.
 </span>
 
-- Okay, but what if $$\lambda_i < 0$$? That wouldn't be a valid variance.
+*Okay, but what if $$\lambda_i < 0$$? That wouldn't be a valid variance.*
 
-> Any covariance matrix $$\Sigma_x$$ is positive semi-definite,<span class="sidenote-number"></span> so we also know that the eigenvalues of $$\Sigma_x$$ are non-negative, i.e., $$\sigma(\Sigma_x) \subset \mathbb{R}_{\geq 0}$$. 
+Any covariance matrix $$\Sigma_x$$ is positive semi-definite,<span class="sidenote-number"></span> so we also know that the eigenvalues of $$\Sigma_x$$ are non-negative, i.e., $$\sigma(\Sigma_x) \subset \mathbb{R}_{\geq 0}$$. 
 <span class="sidenote">
 For any vector $$z \neq \vec{0}$$,
 $$\begin{align*}
@@ -169,9 +171,9 @@ $$\begin{align*}
 \end{align*}$$
 </span>
 
-- What happens if $$\lambda_i = \lambda_j$$ for $$i \neq j$$?
+*What happens if $$\lambda_i = \lambda_j$$ for $$i \neq j$$?*
 
-> Recall that $$\Sigma_x$$ is Hermitian, and therefore is unitarily diagonalizable. This implies that every eigenvalue of $$\Sigma_x$$ has equal geometric and algebraic multiplicities.<span class="sidenote-number"></span> Therefore, for repeated eigenvalues, we can pick any orthogonal eigenvectors from the eigenspace of $$\lambda$$, meaning the PCs are defined only up to a rotation.
+Recall that $$\Sigma_x$$ is Hermitian, and therefore is unitarily diagonalizable. This implies that every eigenvalue of $$\Sigma_x$$ has equal geometric and algebraic multiplicities.<span class="sidenote-number"></span> Therefore, for repeated eigenvalues, we can pick any orthogonal eigenvectors from the eigenspace of $$\lambda$$, meaning the PCs are defined only up to a rotation.
 <span class="sidenote">
 This follows from the Jordan Canonical Form!
 </span>
