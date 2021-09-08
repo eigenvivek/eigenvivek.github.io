@@ -4,7 +4,7 @@ excerpt_separator: <!--more-->
 title: Deriving PCA from the Courant–Fischer Theorem
 description: Practical applications of Fishkind's Matrix Analysis
 permalink: pca-courant-fischer/
-date: 2021-08-06
+date: 2021-09-06
 ---
 
 Principal Component Analysis (PCA) is one of my favorite algorithms because 1) it is foundational and broadly applicable, and 2) it can be derived using approaches from many different mathematical fields.<span class="sidenote-number"></span>
