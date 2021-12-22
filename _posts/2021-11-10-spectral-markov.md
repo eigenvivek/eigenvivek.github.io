@@ -29,7 +29,7 @@ A column vector $$x \in [0, 1]$$ is a probability vector if the sum of all entri
 **Definition 2 (Markov matrix).**
 A matrix $$M \in M_n([0, 1])$$ is a Markov matrix if each of its column is a probability vector.<span class="sidenote-number"></span>
 <span class="sidenote">
-    Said another way, $$\mathbb P( i \to j ) = M_{ij}$$
+    Said another way, if $$i$$ and $$j$$ are states in a Markov chain, $$\mathbb P( j \mapsto i ) = M_{ij}$$
 </span>
 
 The eigenvalues of a Markov matrix have a remarkable property: they're never bigger than 1 in magnitude!
