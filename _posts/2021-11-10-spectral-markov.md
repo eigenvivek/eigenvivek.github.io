@@ -20,36 +20,56 @@ and relates this to the limiting probabilistic behaviors of Markov chains.
 A Markov chain describes the probability of transitioning from one state to another.
 These transition probabilities can be summarized using a Markov matrix:
 
-**Definition 1 (Markov matrix).**
-A matrix $$M \in M_n([0, 1])$$ is a Markov matrix if for every row $$i \in \{1, \dots, n\}$$, $$\sum_{j=1}^n M_{ij} = 1 \,.$$<span class="sidenote-number"></span>
+**Definition 1 (Probability vector).**
+A column vector $$x \in [0, 1]$$ is a probability vector if the sum of all entries is 1.<span class="sidenote-number"></span>
 <span class="sidenote">
-    Said another way, $$\mathbb P( x_i \to x_j ) = M_{ij}$$
+    That is, $$\sum_{i=1}^n x_i = 1$$.
+</span>
+
+**Definition 2 (Markov matrix).**
+A matrix $$M \in M_n([0, 1])$$ is a Markov matrix if each of its column is a probability vector.<span class="sidenote-number"></span>
+<span class="sidenote">
+    Said another way, $$\mathbb P( i \to j ) = M_{ij}$$
 </span>
 
 The eigenvalues of a Markov matrix have a remarkable property: they're never bigger than 1 in magnitude!
-To prove this, we will use an underrated result from linear algebra:
+To prove this, we need an underrated result from linear algebra:
 
 **Theorem 1 (Gershgorin disc theorem).**
 For a matrix $$A \in M_n$$,
-let $$R_i = \sum_{j \neq i} A_{ij}$$ be the radius for the disc $$G_i(A) = \{ z \in \mathbb C : | z - A_{ii} | \leq R_i \} \,,$$
-and let $$G(A) = \cup_{i=1}^n G_i(A) \,.$$
+let the row sum $$R_i = \sum_{j \neq i} A_{ij}$$ be the radius of the disc $$G_i(A) = \{ z \in \mathbb C : | z - A_{ii} | \leq R_i \} \,.$$
+Let the union of these discs be $$G(A) = \cup_{i=1}^n G_i(A) \,.$$
 Then, $$\sigma(A) \subset G(A) \,.$$<span class="sidenote-number"></span>
 <span class="sidenote">
     A good proof is on [Wikipedia](https://en.wikipedia.org/wiki/Gershgorin_circle_theorem#Statement_and_proof)!
 </span>
 
+We can augment the Gershgorin disc theorem with a quick lemma connecting the eigenvalues of $$A$$ and $$A^*$$:
+
+**Lemma 1.**
+For a matrix $$A \in M_n$$, $$\sigma(A) = \sigma(A^*)$$.<span class="sidenote-number"></span>
+<span class="sidenote">
+    Note that $$\sigma(A) = \{\lambda \in \mathbb C : Ax = \lambda x\}$$ represents the set of all eigenvalues of $$A$$.
+</span>
+\
+*Proof:*
+The lemma holds since $$A$$ and $$A^*$$ have the same characteristic polynomial:
+$$\det(A^* - \lambda I) = \det((A - \lambda I)^*) = \det(A - \lambda I) \,.$$
+
+Thanks to Lemma 1, we can equivalently define $$R_i$$ in the Gershgorin disc theorem to be the *column sum*, instead of the row sum.
+Now, the first main result follows:
+
 **Corollary 1 (Spectrum of Markov matrices).**
-The eigenvalues of a Markov matrix $$M \in M_n([0, 1]) \,,$$ are bounded within the unit circle.
-<span class="sidenote-number"></span>
+The eigenvalues of a Markov matrix $$M \in M_n([0, 1]) \,,$$ are bounded within the unit circle.<span class="sidenote-number"></span>
 <span class="sidenote">
     Said mathematically, $$\sigma(M) \subset \{ z \in \mathbb C : |z| \leq 1 \} \,.$$
 </span>
 \
 *Proof:*
-Since the rows of $$M$$ must sum to $$1$$, this means that for every row $$i$$, $$M_{ii} + R_i = 1 $$.
+Since the columns of $$M$$ must sum to $$1$$, this means that for every column $$i$$, $$M_{ii} + R_i = 1$$.
 Therefore, the disc $$G_i(M)$$ is a subset of the unit circle and also intersects the unit circle at $$(1, 0)$$.
 The same holds for the union of the discs, $$G(M)$$.
-Finally, by Theorem 1, $$\sigma(M) \subset G(M) \subset \{ z \in \mathbb C : |z| \leq 1 \} \,.$$
+Therefore, by Theorem 1, $$\sigma(M) \subset G(M) \subset \{ z \in \mathbb C : |z| \leq 1 \}$$.
 
 Here is an illustration of this proof for a Markov matrix in $$M_4([0,1])$$.
 Interestingly, this picture also shows us that the only way we can have an complex eigenvalue with magnitude 1 is if one of the $$M_{ii} = 0$$...
@@ -64,8 +84,8 @@ The spectral radius of a Markov matrix is $$\rho(M) = 1$$ and $$\rho(M) \in \sig
 \
 *Proof:*
 Let $$\vec{1} \in \mathbb R^n$$ be a column vector of all 1s.
-We can then write the row sum constraint as $$M \vec{1} = \vec{1}$$.
-Note that this equation shows that $$\lambda = 1$$ is an eigenvalue of $$M$$.
+We can then write the column sum constraint as $$M^* \vec{1} = \vec{1}$$.
+Note that this equation shows that $$\lambda = 1$$ is an eigenvalue of $$M^*$$ (and by Lemma 1, also an eigenvalue of $$M$$).
 Because the eigenvalues of $$M$$ are constrained within the unit circle by Corollary 1,
 $$\lambda = 1$$ achieves the maxmum possible modulus.
 <!-- In fact, the only way another eigenvalue achieves maximum modulus is if $$M_{ii} = 0$$ for some $$i$$. -->
@@ -80,7 +100,6 @@ and the steady state will correspond the the eigenvectors of $$M$$ whose eigenva
 These will slowly be addressed in future versions of this post.
 
 - What are the algebraic and geometric multiplicities of $$\lambda = 1$$?
-- How does $$\vec{1}$$ being an eigenvector of $$M$$ not contradict the Perron-Frobenius theorem?
 - How many steady state distributions can $$M$$ have?
 - What happens if $$M$$ is not diagonalizable?
 - How does this connect to deterministic discrete linear dynamic systems?
