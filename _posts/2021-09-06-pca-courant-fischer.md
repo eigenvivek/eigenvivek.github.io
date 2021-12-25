@@ -17,6 +17,8 @@ Typically, these derivations involve optimizing a high-dimensional objective fun
     This post synthesizes ideas I encountered in Matrix Analysis ([JHU.AMS.792](https://www.amazon.com/Matrix-Analysis-Second-Roger-Horn/dp/0521548233)) and Unsupervised Learning ([JHU.BME.692](http://www.vision.jhu.edu/teaching/learning/learning17/)).
 </span>
 
+In this post, we prove the Courant--Fischer Theorem, use it to derive PCA, and finally consider some technical points from the derivation.
+
 ## Formulating PCA as a matrix optimization problem
 
 One view of PCA can be motivated by the following question:
@@ -26,7 +28,7 @@ One view of PCA can be motivated by the following question:
 
 Represent one such high-dimensional data point with a random vector $$x \in \mathbb{R}^D$$ and assume the following:
 - $$\mathbb{E}[x] = 0$$ (i.e., the vector is *mean-centered*), and
-- $$\mathrm{rank}(\Sigma_x) \geq d$$, where $$\Sigma_x$$ is the covariance matrix of $$x$$.
+- $$\mathrm{rank}(\Sigma_x) \geq d$$, where $$\Sigma_x$$ is the covariance matrix of $$x$$ and $$d \ll D$$ is the dimensionality of our embedding.
 
 These assumptions lead us to the following definition:
 
@@ -152,14 +154,14 @@ By induction, we can show that the uncorrelatedness of the principal components 
 
 *What if $$\lambda_i$$ is complex? Which eigenvalue is "largest" in this case?*
 
-It is true that there is no total ordering on the complex numbers (see [here](https://math.stackexchange.com/questions/487997/total-ordering-on-complex-numbers)), so there would be no "largest" eigenvalue, as such... However, we have shown that $$\Sigma_x$$ is Hermitian, so $$\sigma(\Sigma) \subset \mathbb{R}\,.$$<span class="sidenote-number"></span>
+It is true that there is no total ordering on the complex numbers (see [here](https://math.stackexchange.com/questions/487997/total-ordering-on-complex-numbers)), so there would be no "largest" eigenvalue, as such... However, we have shown that $$\Sigma_x$$ is Hermitian, so $$\sigma(\Sigma_x) \subseteq \mathbb{R}\,.$$<span class="sidenote-number"></span>
 <span class="sidenote">
     This is because Hermitian matrices are unitary diagonalizable, and the diagonal matrix, which is comprised of the eigenvalues, is itself Hermitian.
 </span>
 
 *Okay, but what if $$\lambda_i < 0$$? That wouldn't be a valid variance.*
 
-Any covariance matrix $$\Sigma_x$$ is positive semi-definite,<span class="sidenote-number"></span> so we also know that the eigenvalues of $$\Sigma_x$$ are non-negative, i.e., $$\sigma(\Sigma_x) \subset \mathbb{R}_{\geq 0}$$. 
+Any covariance matrix $$\Sigma_x$$ is positive semi-definite,<span class="sidenote-number"></span> so we also know that the eigenvalues of $$\Sigma_x$$ are non-negative, i.e., $$\sigma(\Sigma_x) \subseteq \mathbb{R}_{\geq 0}\,.$$
 <span class="sidenote">
 For any vector $$z \neq \vec{0}$$,
 $$\begin{align*}
@@ -173,7 +175,7 @@ $$\begin{align*}
 
 *What happens if $$\lambda_i = \lambda_j$$ for $$i \neq j$$?*
 
-Recall that $$\Sigma_x$$ is Hermitian, and therefore is unitarily diagonalizable. This implies that every eigenvalue of $$\Sigma_x$$ has equal geometric and algebraic multiplicities.<span class="sidenote-number"></span> Therefore, for repeated eigenvalues, we can pick any orthogonal eigenvectors from the eigenspace of $$\lambda$$, meaning the PCs are defined only up to a rotation.
+Recall that $$\Sigma_x$$ is Hermitian, and therefore is unitarily diagonalizable. This implies that every eigenvalue of $$\Sigma_x$$ has equal geometric and algebraic multiplicities.<span class="sidenote-number"></span> Therefore, for repeated eigenvalues, we can pick any orthogonal eigenvectors from the eigenspace of $$\lambda = \lambda_i = \lambda_j$$, meaning the PCs are defined only up to a rotation.
 <span class="sidenote">
 This follows from the Jordan Canonical Form!
 </span>
