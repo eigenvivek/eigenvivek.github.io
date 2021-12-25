@@ -175,7 +175,7 @@ $$\begin{align*}
 
 *What happens if $$\lambda_i = \lambda_j$$ for $$i \neq j$$?*
 
-Recall that $$\Sigma_x$$ is Hermitian, and therefore is unitarily diagonalizable. This implies that every eigenvalue of $$\Sigma_x$$ has equal geometric and algebraic multiplicities.<span class="sidenote-number"></span> Therefore, for repeated eigenvalues, we can pick any orthogonal eigenvectors from the eigenspace of $$\lambda = \lambda_i = \lambda_j$$, meaning the PCs are defined only up to a rotation.
+Recall that $$\Sigma_x$$ is Hermitian, and therefore is unitarily diagonalizable. This implies that every eigenvalue of $$\Sigma_x$$ has equal geometric and algebraic multiplicities.<span class="sidenote-number"></span> Therefore, for repeated eigenvalues, we can pick any orthonormal eigenvectors from the eigenspace of $$\lambda = \lambda_i = \lambda_j$$, meaning the PCs are defined only up to a rotation.
 <span class="sidenote">
 This follows from the Jordan Canonical Form!
 </span>
