@@ -27,10 +27,10 @@ so we constrain the solutions to be sparse:
     \min_s \frac{1}{2} ||y - C\Psi s||_2^2 + \lambda||s||_0 \,. \tag{Opti 1}
 \end{equation}
 
-However, minimizing $$l_0$$ norms is NP hard<span class="sidenote-number"></span>
+However, minimizing $$l_0$$ norms is NP hard,<span class="sidenote-number"></span>
 <span class="sidenote">
     Because it requires combinatorial optimization.
-</span>, so we relax the problem with the $$l_1$$ norm:
+</span> so we relax the problem with the $$l_1$$ norm:
 \begin{equation}
     \min_s \frac{1}{2} ||y - C\Psi s||_2^2 + \lambda||s||_1 \,. \tag{Opti 2}
 \end{equation}
