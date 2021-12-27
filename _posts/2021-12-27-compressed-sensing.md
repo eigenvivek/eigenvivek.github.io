@@ -36,5 +36,5 @@ However, minimizing $$l_0$$ norms is NP hard,<span class="sidenote-number"></spa
 \end{equation}
 
 This is a well-defined problem, and is solvable with linear programming (e.g., basis pursuit, denoising/matching).
-Additionally, Opti 2 is equivalent to Opti 2 under certain conditions (e.g., $$\nu$$-incoherence) and constraints on $$C\Psi$$.
-Then, given a noisy, downsampled, corrputed measurement $$y$$, solve Opti 2 to get $$\hat s$$, and predict the oritinal signal to be $$\hat x = \Psi \hat s$$ which is equivalent to $$\hat s \stackrel{\mathcal U^{-1}}{\mapsto} \hat x$$.
+Additionally, Opti 2 is equivalent to Opti 1 under certain conditions (e.g., $$\nu$$-incoherence) and constraints on $$C\Psi$$.
+Then, given a noisy, downsampled measurement $$y$$, solve Opti 2 to get $$\hat s$$, and predict the oritinal signal to be $$\hat x = \Psi \hat s$$ which is equivalent to $$\hat s \stackrel{\mathcal U^{-1}}{\mapsto} \hat x$$.
