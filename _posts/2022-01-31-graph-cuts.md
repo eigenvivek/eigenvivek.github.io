@@ -7,7 +7,7 @@ permalink: graph-cuts/
 date: 2022-01-31
 ---
 
-## 1. Defining the Graph Cut Problem
+## Defining the Graph Cut Problem
 
 Let $$G = (V, E)$$ be a graph with $$|V| = n$$.
 The goal of the graph cut problem is to find a subset of the vertex set $$S \subset V$$ that minimizes the cut ratio<span class="sidenote-number"></span>
@@ -33,7 +33,7 @@ However, this problem is NP-hard,<span class="sidenote-number"></span> so solvin
     See [here](https://en.wikipedia.org/wiki/Cut_(graph_theory)#Maximum_cut) for more details.
 </span>
 
-### 1.1 Relaxing the Graph Cut Problem
+### Relaxing the Graph Cut Problem
 
 First, note that
 
@@ -47,7 +47,10 @@ $$
 \end{align}
 $$
 
-allowing us to rewrite the cut ratio as
+allowing us to rewrite the cut ratio as<span class="sidenote-number"></span>
+<span class="sidenote">
+    $$\sum_{i < j} = \sum_{j=1}^n \sum_{i=1}^{j-1}$$.
+</span>
 
 $$
 \begin{equation}
@@ -57,16 +60,15 @@ $$
 
 One very interesting and surprising fact is that the sum of squared pairwise differences in the numerator and denominator of $$\phi'$$ can be written in terms of matrix products using the *graph Laplacian*.<span class="sidenote-number"></span>
 <span class="sidenote">
-    See Definition 1 in [this section](#2-spectral-properties-of-the-graph-laplacian).
+    See Definition 1 in [this section](#spectral-properties-of-the-graph-laplacian).
 </span>
 Specifically, we can write
 
 $$
 \begin{equation}
-    \phi'(S) = 
-    \frac{\sum_{(i,j) \in E} (x_i - x_j)^2}{\sum_{i < j} (x_i - x_j)^2}
-    =
-    \frac{x^T L_G x}{x^T L_K x} \,,
+\sum_{(i,j) \in E} (x_i - x_j)^2 = x^T L_G x
+\quad\text{and}\quad
+\sum_{i < j} (x_i - x_j)^2 = x^T L_K x \,,
 \end{equation}
 $$
 
@@ -88,7 +90,7 @@ $$
 \end{equation}
 $$
 
-While removing the $$\min$$ in the demoninator of $$\phi$$ makes this a convex objective, the minimization problem is still NP-hard because of the support of $$x$$.
+While removing the $$\min$$ in the denominator makes $$\phi'$$ a convex objective, the minimization problem is still NP-hard because of the support of $$x$$.
 We can further relax the problem by letting $$x \in \mathbb{R}^n$$ since we can threshold the values of $$x$$ to make it binary.
 Then, note that WLOG, we can also assume that $$\sum_{i = 1}^n x_i = 0$$ since we could arbitrarily shift $$x$$ however we wanted.<span class="sidenote-number"></span>
 <span class="sidenote">
@@ -104,7 +106,7 @@ $$
 
 To solve this elegantly, we will appeal to classical properties of the graph Laplacian.
 
-## 2. Spectral Properties of the Graph Laplacian
+## Spectral Properties of the Graph Laplacian
 
 In this context, *spectral* refers to the spectrum of eigenvalues.
 To get eigenvalues, we need a matrix.
@@ -125,7 +127,7 @@ Since $$G$$ is complete, the graph Laplacian can be written as $$L_K = (n-1)I - 
 If $$v \perp \vec 1$$, then $$\require{cancel}L_k v = nIv - \cancelto{0}{\mathbf 1 v} = nv$$.
 This also proves that the eigenvalue $$1$$ has algebraic multiplicity $$n-1$$.
 
-## 3. Solving the Graph Cut Relaxation
+## Solving the Graph Cut Relaxation
 
 Since we can assume that $$x \perp \vec 1$$, Corollary 1 allows us to rewrite our optimization problem as
 
