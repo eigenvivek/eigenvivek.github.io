@@ -1,7 +1,7 @@
 ---
 layout: post
 excerpt_separator: <!--more-->
-title: Graph Cuts and More Eigenvalues
+title: Graph Cuts, Graph Laplacians, and λ2
 description: Another interesting eigenvalue application.
 permalink: graph-cuts/
 date: 2022-01-31
@@ -79,7 +79,7 @@ where $$L_G$$ is the graph Laplacian of $$G$$ and $$L_K$$ is the graph Laplacian
 </span>
 
 This, along with the fact
-$$\begin{equation} 
+$$\begin{equation}
     \min\{|S|, |S^c|\} \geq |S| |S^c| \geq \frac{1}{2} \min\{|S|, |S^c|\} \,,
 \end{equation}$$
 allows us to bound this re-expressed cut ratio:
@@ -122,7 +122,7 @@ Since we assume $$G$$ is undirected, $$A$$ is a symmetric matrix, and therefore,
 
 **Corollary 1.** For a complete graph $$K$$, any vector perpendicular to $$\vec 1$$ is also an eigenvector of the graph Laplacian.
 \
-*Proof:* 
+*Proof:*
 Since $$G$$ is complete, the graph Laplacian can be written as $$L_K = (n-1)I - (\mathbf 1 - I) = nI - \mathbf 1$$
 If $$v \perp \vec 1$$, then $$\require{cancel}L_k v = nIv - \cancelto{0}{\mathbf 1 v} = nv$$.
 This also proves that the eigenvalue $$1$$ has algebraic multiplicity $$n-1$$.

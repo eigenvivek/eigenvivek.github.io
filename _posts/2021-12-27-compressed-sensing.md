@@ -1,7 +1,7 @@
 ---
 layout: post
 excerpt_separator: <!--more-->
-title: A Quick Derivation of Compressed Sensing
+title: A Quick Formulation of Compressed Sensing
 description: A very, very mininal explanation of where compressed sensing comes from.
 permalink: compressed-sensing/
 date: 2021-12-27
@@ -15,7 +15,7 @@ Here, we will derive the optimization problem at the core of compressed sensing.
 - Let $$x = \Psi s$$ for some universal transform basis $$\Psi$$ (e.g., Fourier, wavelet, etc.).
 - Let $$y = Cx$$ be the *measured* signal, where $$C$$ is the measurement matrix.
 
-Our objective is to obtain a *subsampled* version of $$s$$ from $$y$$, and then recover $$s \stackrel{\mathcal U^{-1}}{\mapsto} x$$, 
+Our objective is to obtain a *subsampled* version of $$s$$ from $$y$$, and then recover $$s \stackrel{\mathcal U^{-1}}{\mapsto} x$$,
 i.e.,
 \begin{equation}
     \min_s \frac{1}{2} ||y - C\Psi s||_2^2 \,. \tag{Opti 0}

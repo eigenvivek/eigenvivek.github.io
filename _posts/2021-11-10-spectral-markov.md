@@ -1,7 +1,7 @@
 ---
 layout: post
 excerpt_separator: <!--more-->
-title: The Spectral Properties of Markov Chains
+title: Some Spectral Properties of Markov Chains
 description: Gershgorin and his Circles
 permalink: spectral-markov-chains/
 date: 2021-11-10
@@ -17,6 +17,7 @@ This post explores the spectral properties of Markov chains<span class="sidenote
 and relates this to the limiting probabilistic behaviors of Markov chains.
 
 Three main results are proved in this post:
+
 1. The eigenvalues of a Markov chain are bounded within the unit circle
 2. A large class of Markov chains have a unique stationary distribution
 3. If the Markov chain is not diagonalizable, the limiting distributions are calculable using the Jordan Canonical Form
@@ -54,7 +55,7 @@ Given a matrix $$A \in M_n$$, $$\sigma(A) = \sigma(A^*)$$.
 \
 *Proof:*
 The lemma holds since $$A$$ and $$A^*$$ have the same characteristic polynomial:
-$$\det(A^* - \lambda I) = \det((A - \lambda I)^*) = \det(A - \lambda I) \,.$$
+$$\det(A^*- \lambda I) = \det((A - \lambda I)^*) = \det(A - \lambda I) \,.$$
 
 Thanks to Lemma 1, we can equivalently define $$R_i$$ in the Gershgorin disc theorem to be the *column sum*, $$\sum_{i \neq j} A_{ij}$$, instead of the row sum.
 Now, the first main result follows:
@@ -84,7 +85,7 @@ The spectral radius of a Markov matrix is $$\rho(M) = 1$$ and $$\rho(M) \in \sig
 \
 *Proof:*
 Let $$\vec{1} \in \mathbb R^n$$ be a column vector of all 1s.
-We can then write the column sum constraint as $$M^* \vec{1} = \vec{1}$$.
+We can then write the column sum constraint as $$M^*\vec{1} = \vec{1}$$.
 Note that this equation shows that $$\lambda = 1$$ is an eigenvalue of $$M^*$$ (and by Lemma 1, also an eigenvalue of $$M$$).
 Because the eigenvalues of $$M$$ are constrained within the unit circle by Corollary 1,
 $$\lambda = 1$$ achieves the maximum possible modulus.
@@ -94,7 +95,7 @@ Therefore, $$\rho(M) = 1$$ and $$\rho(M) \in \sigma(M)$$.
 *Remark:*
 This is a very powerful sets of results!
 They show that if our Markov matrix is diagonalizable (i.e., $$M = SDS^{-1}$$ for $$S \in M_n$$ invertible and $$D \in M_n$$ diagonal),
-then $$M^k = SD^kS^{-1}$$ will converge to some steady state distribution as $$k \to \infty$$, 
+then $$M^k = SD^kS^{-1}$$ will converge to some steady state distribution as $$k \to \infty$$,
 and the steady state will correspond the the eigenvectors of $$M$$ whose eigenvalues equal the spectral radius.<span class="sidenote-number"></span>
 <span class="sidenote">
     What happens if $$M$$ is not diagonalizable?
@@ -122,6 +123,7 @@ Since the geometric multiplicity of an eigenvalue is bounded above by its algebr
 This vector $$x$$, scaled so that its entries sum to 1, is the steady state distribution of $$M$$.
 
 ## Future questions to answer
+
 These will slowly be addressed in future versions of this post.
 
 - What happens if $$M$$ is not diagonalizable?

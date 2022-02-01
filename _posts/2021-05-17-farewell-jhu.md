@@ -2,7 +2,7 @@
 layout: post
 excerpt_separator: <!--more-->
 title: Farewell Hopkins (For Now...)
-description: JHU was very good to me :)
+description: JHU was very good to me.
 permalink: farewell-jhu/
 date: 2021-05-17 
 ---
