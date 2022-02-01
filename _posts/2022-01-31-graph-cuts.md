@@ -1,7 +1,7 @@
 ---
 layout: post
 excerpt_separator: <!--more-->
-title: Graph Cuts and Cheeger's Inequality
+title: Graph Cuts and More Eigenvalues
 description: Another interesting eigenvalue application.
 permalink: graph-cuts/
 date: 2022-01-31
@@ -112,6 +112,7 @@ We can represent a grpah as a matrix using either the adjecency matrix $$A \in M
 
 **Definition 1 (The Graph Laplacian).**
 The graph Laplacian is a matrix representation of graph $$G$$. It is written as $$L_G = D - A$$ where $$D$$ is the degree matrix and $$A$$ is the adjacency matrix of the graph.
+Since we assume $$G$$ is undirected, $$A$$ is a symmetric matrix, and therefore, so is $$L_G$$.
 
 **Theorem 1.** A graph Laplacian has eigenvector $$\vec 1$$ with eigenvalue 0.
 \
@@ -124,14 +125,30 @@ Since $$G$$ is complete, the graph Laplacian can be written as $$L_K = (n-1)I - 
 If $$v \perp \vec 1$$, then $$\require{cancel}L_k v = nIv - \cancelto{0}{\mathbf 1 v} = nv$$.
 This also proves that the eigenvalue $$1$$ has algebraic multiplicity $$n-1$$.
 
-Since we can assume that $$x \perp \vec 1$$, this corollary allows us to rewrite our optimization problem as
+## 3. Solving the Graph Cut Relaxation
+
+Since we can assume that $$x \perp \vec 1$$, Corollary 1 allows us to rewrite our optimization problem as
 
 $$
 \begin{equation}
     \min_\stackrel{x \in \mathbb R^n}{x \perp \vec 1} \frac{x^T L_G x}{x^T L_K x}
     =
-    \min_\stackrel{x \in \mathbb R^n}{x \perp \vec 1} \frac{x^T L_G x}{n ||x||_2^2}
+    \frac{1}{n} \min_\stackrel{x \in \mathbb R^n}{x \perp \vec 1} \frac{x^T L_G x}{x^Tx} \,.
 \end{equation}
 $$
 
-## 3. Solving the Graph Cut Relaxation and Cheeger's Inequality
+This bounded quadratic form is present in many optimization problems,
+and since the graph Laplacian is symmetric, we can solve it using the Courant--Fischer theorem.<span class="sidenote-number"></span>
+<span class="sidenote">
+    For background on the Courant--Fischer theorem, see [this derivation of PCA](https://vivekg.dev/pca-courant-fischer/).
+    In this proof, we use the variant of Courant--Fischer where the eigenvalues are sorted in ascending order.
+    The statement is mostly the same, except the min-max becomes a max-min.
+</span>
+Specifically, appealing to [Corollary 1 in the PCA derivation](https://vivekg.dev/pca-courant-fischer/),
+we can solve $$\min_{x \in \mathbb R^n,\ x \perp \vec 1} \frac{x^T L_G x}{x^Tx} = \lambda_2$$, where $$\lambda_1=0 \leq \lambda_2 \leq \cdots \lambda_n$$ are the eigenvalues of $$L_G$$.
+
+Therefore, the final solution to the graph cut relaxation is
+
+$$\begin{equation}
+\min_{S \subset V} \phi'(S) = \frac{\lambda_2}{n} \,.
+\end{equation}$$
