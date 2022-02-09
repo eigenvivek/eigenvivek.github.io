@@ -74,8 +74,9 @@ $$
 
 where $$L_G$$ is the graph Laplacian of $$G$$ and $$L_K$$ is the graph Laplacian of the complete graph on $$V$$.<span class="sidenote-number"></span>
 <span class="sidenote">
-    The proof to show this identity involves a bunch of matrix algebra and careful indexing, which is annoying to typeset.
-    It's easy enough to write out yourself (hint: use $$L_K = nI - \mathbf 1$$).
+    To prove this, we can use the fact that every Laplacian can be written as a sum of edge Laplacians, $$L_G = \sum_{(i, j) \in E} L_{ij} = \sum_{(i, j) \in E} (e_i - e_j)(e_i - e_j)^T$$. Then $$x^T L_G x = \sum_{(i, j) \in E} x^T(e_i - e_j)(e_i - e_j)^Tx$$
+    $$= \sum_{(i, j) \in E} (x_i - x_j)^2 \,.$$
+    Note that this also proves that the Laplacian is positive semi-definite.
 </span>
 
 This, along with the fact
@@ -148,6 +149,7 @@ and since the graph Laplacian is symmetric, we can solve it using the Courant--F
 </span>
 Specifically, appealing to [Corollary 1 in the PCA derivation](https://vivekg.dev/pca-courant-fischer/),
 we can solve $$\min_{x \in \mathbb R^n,\ x \perp \vec 1} \frac{x^T L_G x}{x^Tx} = \lambda_2$$, where $$\lambda_1=0 \leq \lambda_2 \leq \cdots \lambda_n$$ are the eigenvalues of $$L_G$$.
+Note that we know the eigenvalues of $$L_G$$ are non-negative because we proved that $$L_G$$ is positive semi-definite in deriving the approximate objective function.
 
 Therefore, the final solution to the graph cut relaxation is
 
