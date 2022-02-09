@@ -32,8 +32,30 @@ However, this problem is NP-hard,<span class="sidenote-number"></span> so solvin
 <span class="sidenote">
     See [here](https://en.wikipedia.org/wiki/Cut_(graph_theory)#Maximum_cut) for more details.
 </span>
+Before doing so, it is useful to first define the graph Laplacian and prove a few properties.
 
-### Relaxing the Graph Cut Problem
+## Spectral Properties of the Graph Laplacian
+
+In this context, *spectral* refers to the spectrum of eigenvalues.
+To get eigenvalues, we need a matrix.
+We can represent a grpah as a matrix using either the adjecency matrix $$A \in M_n(\{0, 1\})$$ and the degree matrix $$D \in M_n(\{0, 1, \dots, n-1\})$$.
+
+**Definition 1 (The Graph Laplacian).**
+The graph Laplacian is a matrix representation of graph $$G$$. It is written as $$L_G = D - A$$ where $$D$$ is the degree matrix and $$A$$ is the adjacency matrix of the graph.
+Since we assume $$G$$ is undirected, $$A$$ is a symmetric matrix, and therefore, so is $$L_G$$.
+
+**Theorem 1.** A graph Laplacian has eigenvector $$\vec 1$$ with eigenvalue 0.
+\
+*Proof:* $$L_G \vec 1 = (D - A) \vec 1 = D \vec 1 - A \vec 1 = \vec 0$$.
+
+**Corollary 1.** For a complete graph $$K$$, any vector perpendicular to $$\vec 1$$ is also an eigenvector of the graph Laplacian.
+\
+*Proof:*
+Since $$G$$ is complete, the graph Laplacian can be written as $$L_K = (n-1)I - (\mathbf 1 - I) = nI - \mathbf 1$$
+If $$v \perp \vec 1$$, then $$\require{cancel}L_k v = nIv - \cancelto{0}{\mathbf 1 v} = nv$$.
+This also proves that the eigenvalue $$1$$ has algebraic multiplicity $$n-1$$.
+
+## Relaxing the Graph Cut Problem
 
 First, note that
 
@@ -74,8 +96,9 @@ $$
 
 where $$L_G$$ is the graph Laplacian of $$G$$ and $$L_K$$ is the graph Laplacian of the complete graph on $$V$$.<span class="sidenote-number"></span>
 <span class="sidenote">
-    The proof to show this identity involves a bunch of matrix algebra and careful indexing, which is annoying to typeset.
-    It's easy enough to write out yourself (hint: use $$L_K = nI - \mathbf 1$$).
+    To prove this, we can use the fact that every Laplacian can be written as a sum of edge Laplacians, $$L_G = \sum_{(i, j) \in E} L_{ij} = \sum_{(i, j) \in E} (e_i - e_j)(e_i - e_j)^T$$. Then $$x^T L_G x = \sum_{(i, j) \in E} x^T(e_i - e_j)(e_i - e_j)^Tx$$
+    $$= \sum_{(i, j) \in E} (x_i - x_j)^2 \,.$$
+    Note that this also proves that the Laplacian is positive semi-definite.
 </span>
 
 This, along with the fact
@@ -106,27 +129,6 @@ $$
 
 To solve this elegantly, we will appeal to classical properties of the graph Laplacian.
 
-## Spectral Properties of the Graph Laplacian
-
-In this context, *spectral* refers to the spectrum of eigenvalues.
-To get eigenvalues, we need a matrix.
-We can represent a grpah as a matrix using either the adjecency matrix $$A \in M_n(\{0, 1\})$$ and the degree matrix $$D \in M_n(\{0, 1, \dots, n-1\})$$.
-
-**Definition 1 (The Graph Laplacian).**
-The graph Laplacian is a matrix representation of graph $$G$$. It is written as $$L_G = D - A$$ where $$D$$ is the degree matrix and $$A$$ is the adjacency matrix of the graph.
-Since we assume $$G$$ is undirected, $$A$$ is a symmetric matrix, and therefore, so is $$L_G$$.
-
-**Theorem 1.** A graph Laplacian has eigenvector $$\vec 1$$ with eigenvalue 0.
-\
-*Proof:* $$L_G \vec 1 = (D - A) \vec 1 = D \vec 1 - A \vec 1 = \vec 0$$.
-
-**Corollary 1.** For a complete graph $$K$$, any vector perpendicular to $$\vec 1$$ is also an eigenvector of the graph Laplacian.
-\
-*Proof:*
-Since $$G$$ is complete, the graph Laplacian can be written as $$L_K = (n-1)I - (\mathbf 1 - I) = nI - \mathbf 1$$
-If $$v \perp \vec 1$$, then $$\require{cancel}L_k v = nIv - \cancelto{0}{\mathbf 1 v} = nv$$.
-This also proves that the eigenvalue $$1$$ has algebraic multiplicity $$n-1$$.
-
 ## Solving the Graph Cut Relaxation
 
 Since we can assume that $$x \perp \vec 1$$, Corollary 1 allows us to rewrite our optimization problem as
@@ -148,6 +150,7 @@ and since the graph Laplacian is symmetric, we can solve it using the Courant--F
 </span>
 Specifically, appealing to [Corollary 1 in the PCA derivation](https://vivekg.dev/pca-courant-fischer/),
 we can solve $$\min_{x \in \mathbb R^n,\ x \perp \vec 1} \frac{x^T L_G x}{x^Tx} = \lambda_2$$, where $$\lambda_1=0 \leq \lambda_2 \leq \cdots \lambda_n$$ are the eigenvalues of $$L_G$$.
+Note that we know the eigenvalues of $$L_G$$ are non-negative because we proved that $$L_G$$ is positive semi-definite in deriving the approximate objective function.
 
 Therefore, the final solution to the graph cut relaxation is
 
