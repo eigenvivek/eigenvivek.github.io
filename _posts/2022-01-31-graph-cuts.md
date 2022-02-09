@@ -32,8 +32,30 @@ However, this problem is NP-hard,<span class="sidenote-number"></span> so solvin
 <span class="sidenote">
     See [here](https://en.wikipedia.org/wiki/Cut_(graph_theory)#Maximum_cut) for more details.
 </span>
+Before doing so, it is useful to first define the graph Laplacian and prove a few properties.
 
-### Relaxing the Graph Cut Problem
+## Spectral Properties of the Graph Laplacian
+
+In this context, *spectral* refers to the spectrum of eigenvalues.
+To get eigenvalues, we need a matrix.
+We can represent a grpah as a matrix using either the adjecency matrix $$A \in M_n(\{0, 1\})$$ and the degree matrix $$D \in M_n(\{0, 1, \dots, n-1\})$$.
+
+**Definition 1 (The Graph Laplacian).**
+The graph Laplacian is a matrix representation of graph $$G$$. It is written as $$L_G = D - A$$ where $$D$$ is the degree matrix and $$A$$ is the adjacency matrix of the graph.
+Since we assume $$G$$ is undirected, $$A$$ is a symmetric matrix, and therefore, so is $$L_G$$.
+
+**Theorem 1.** A graph Laplacian has eigenvector $$\vec 1$$ with eigenvalue 0.
+\
+*Proof:* $$L_G \vec 1 = (D - A) \vec 1 = D \vec 1 - A \vec 1 = \vec 0$$.
+
+**Corollary 1.** For a complete graph $$K$$, any vector perpendicular to $$\vec 1$$ is also an eigenvector of the graph Laplacian.
+\
+*Proof:*
+Since $$G$$ is complete, the graph Laplacian can be written as $$L_K = (n-1)I - (\mathbf 1 - I) = nI - \mathbf 1$$
+If $$v \perp \vec 1$$, then $$\require{cancel}L_k v = nIv - \cancelto{0}{\mathbf 1 v} = nv$$.
+This also proves that the eigenvalue $$1$$ has algebraic multiplicity $$n-1$$.
+
+## Relaxing the Graph Cut Problem
 
 First, note that
 
@@ -106,27 +128,6 @@ $$
 $$
 
 To solve this elegantly, we will appeal to classical properties of the graph Laplacian.
-
-## Spectral Properties of the Graph Laplacian
-
-In this context, *spectral* refers to the spectrum of eigenvalues.
-To get eigenvalues, we need a matrix.
-We can represent a grpah as a matrix using either the adjecency matrix $$A \in M_n(\{0, 1\})$$ and the degree matrix $$D \in M_n(\{0, 1, \dots, n-1\})$$.
-
-**Definition 1 (The Graph Laplacian).**
-The graph Laplacian is a matrix representation of graph $$G$$. It is written as $$L_G = D - A$$ where $$D$$ is the degree matrix and $$A$$ is the adjacency matrix of the graph.
-Since we assume $$G$$ is undirected, $$A$$ is a symmetric matrix, and therefore, so is $$L_G$$.
-
-**Theorem 1.** A graph Laplacian has eigenvector $$\vec 1$$ with eigenvalue 0.
-\
-*Proof:* $$L_G \vec 1 = (D - A) \vec 1 = D \vec 1 - A \vec 1 = \vec 0$$.
-
-**Corollary 1.** For a complete graph $$K$$, any vector perpendicular to $$\vec 1$$ is also an eigenvector of the graph Laplacian.
-\
-*Proof:*
-Since $$G$$ is complete, the graph Laplacian can be written as $$L_K = (n-1)I - (\mathbf 1 - I) = nI - \mathbf 1$$
-If $$v \perp \vec 1$$, then $$\require{cancel}L_k v = nIv - \cancelto{0}{\mathbf 1 v} = nv$$.
-This also proves that the eigenvalue $$1$$ has algebraic multiplicity $$n-1$$.
 
 ## Solving the Graph Cut Relaxation
 
