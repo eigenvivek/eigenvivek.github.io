@@ -16,11 +16,15 @@ This post explores the spectral properties of Markov chains<span class="sidenote
 </span>
 and relates this to the limiting probabilistic behaviors of Markov chains.
 
-Three main results are proved in this post:
+Three main results will be proved in this post (still need to prove #4):<span class="sidenote-number"></span>
+<span class="sidenote">
+    Said more precisely, Result 2 really characterizes the *dimension of the space of stationary distributions*.
+</span>
 
 1. The eigenvalues of a Markov chain are bounded within the unit circle
-2. A large class of Markov chains have a unique stationary distribution
-3. If the Markov chain is not diagonalizable, the limiting distributions are calculable using the Jordan Canonical Form
+2. The number of stationary distributions a Markov chain has is related to the geometric multiplicity of $$\lambda=1$$
+3. A large class of Markov chains have a unique stationary distribution
+4. If a Markov chain is not diagonalizable, its stationary distributions are calculable using the Jordan Canonical Form
 
 ## Gershgorin and His Circles
 
@@ -92,15 +96,46 @@ $$\lambda = 1$$ achieves the maximum possible modulus.
 <!-- In fact, the only way another eigenvalue achieves maximum modulus is if $$M_{ii} = 0$$ for some $$i$$. -->
 Therefore, $$\rho(M) = 1$$ and $$\rho(M) \in \sigma(M)$$.
 
+## Enumerating the Stationary Distributions
+
 *Remark:*
-This is a very powerful sets of results!
+Gershgorin gives us a very powerful sets of results!
 They show that if our Markov matrix is diagonalizable (i.e., $$M = SDS^{-1}$$ for $$S \in M_n$$ invertible and $$D \in M_n$$ diagonal),
-then $$M^k = SD^kS^{-1}$$ will converge to some steady state distribution as $$k \to \infty$$,
-and the steady state will correspond the the eigenvectors of $$M$$ whose eigenvalues equal the spectral radius.<span class="sidenote-number"></span>
+then $$M^k = SD^kS^{-1}$$ will converge to some matrix as $$k \to \infty$$,
+and the steady state for any initial condition will be determined by the eigenvectors of $$M$$ whose eigenvalues equal the spectral radius.<span class="sidenote-number"></span>
 <span class="sidenote">
     What happens if $$M$$ is not diagonalizable?
     In this case, we have to use the Jordan Canonical Form (JCF) of $$M$$ (more on this later).
 </span>
+
+For a cool application of this convergence idea, let's consider a symmetric Markov chain (i.e., forwards and backwards probability are equal).
+The spectral theorem tells us that the eigenvectors of this matrix are orthogonal.
+Additionally, assume that the geometric multiplicity of the eigenvector $$1$$ is $$k$$ for this example.
+Then,
+
+$$
+\begin{align*}
+    \lim_{k \rightarrow \infty} M^k
+    &= \lim_{k \rightarrow \infty} SD^kS^{-1} \\
+    &= S (I_k \oplus \mathbf 0_{n-k}) S^{-1} \\
+    &= \begin{pmatrix} s_1 \cdots s_k & \vec 0 \cdots \vec 0 \end{pmatrix}
+    \begin{pmatrix} s_1 & \cdots & s_n \end{pmatrix}^* \\
+    &= \sum_{i=1}^k s_i s_i^* \,.
+\end{align*}
+$$
+
+Since the eigenvectors of $$M$$ are orthonormal, note that $$s_i s_i^*$$ is a matrix representing the orthogonal projection onto $$s_i$$.
+Thus, $$P_{S_k} = \sum_{i=1}^k s_i s_i^*$$ is a projection matrix onto the span of $$\{s_1, \dots, s_k\}$$.
+Finally, we can see that for some initial condition $$x_0$$,
+
+$$ \begin{equation}
+    \lim_{k \rightarrow \infty} M^k x_0 = P_{S_k} x_0 \,,
+\end{equation} $$
+
+meaning the stationary distributions of $$M$$ are an orthogonal projection onto the eigenspace of $$\lambda = 1$$.
+Said another way, any convex combination of the eigenvectors of $$M$$ with eigenvalue $$1$$ is a valid stationary distribution.
+
+So, in general, when does $$M$$ have a unique stationary distribution (i.e., when is the geometric multiplicity of $$1$$ equal to $$1$$)?
 
 ## The Perron--Frobenius Theorem
 
@@ -115,16 +150,35 @@ To study Markov matrices, we focus on one of them:
 If $$A \in M_n(\mathbb R)$$ is positive, then $$\rho(A)$$ is an eigenvalue of $$A$$ with algebraic multiplicity 1.
 
 **Corollary 3.**
-Theorem 2 still applies if $$A$$ is non-negative and irreducible.
+Theorem 2 still applies if $$A$$ is non-negative and irreducible.<span class="sidenote-number"></span>
+<span class="sidenote">
+    Irreducibility is related to the concept of the *connectedness* of a matrix. Specifically, matrices can be represented as *entry digraphs* (take the matrix, binarize it, and treat that as the adjacency matrix of a directed graph). If the graph is strongly connected (i.e., each vertex is connected to every other vertex by a directed edge), then it is irreducible.
+</span>
 
 By definition, Markov matrices are non-negative.
-If a Markov matrix is irreducible, then the Perron--Frobenius theorem says that $$rho(M)=1$$ is a simple eigenvalue of $$M$$.
+If a Markov matrix is irreducible, then the Perron--Frobenius theorem says that $$\rho(M)=1$$ is a simple eigenvalue of $$M$$.
 Since the geometric multiplicity of an eigenvalue is bounded above by its algebraic multiplicity, that means that there is only a single eigenvector $$x$$ such that $$Ax = x$$.
-This vector $$x$$, scaled so that its entries sum to 1, is the steady state distribution of $$M$$.
+This vector $$x$$, scaled so that its entries sum to 1, is the unique steady state distribution of $$M$$.
 
-## Future questions to answer
+The defintion of irreducibility also helps us understand the result proved in the previous section.
+If a matrix is reducible, there are multiple strongly connected components.
+These are communities in the graph that, once you walk into, you cannot walk out of.<span class="sidenote-number"></span>
+<span class="sidenote">
+    You can check out any time you like, but you can never leave.
+</span>
+Such a community would have an eigenvector with non-zero entry for each vertex in the strongly connected component and $$0$$'s for every other vertex, and this eigenvector would be a stationary distribution.
+Each strongly connected component would have its own such eigenvector, and their convex hull would be the space of all possible stationary distributions.
+This is exactly what we proved in the previous section, but thanks to this spectral graph theory perspective, we now we don't need $$M$$ to be symmetric to prove it!
+
+## Diagonalization with the Jordan Canonical Form
+
+The past results have assumed that $$M$$ is diagonalizable. What if this is not true?
+
+I'm not sure how the math works out really, but I'll endeavor to prove it some day :)
+
+## Future Questions to Answer
 
 These will slowly be addressed in future versions of this post.
 
-- What happens if $$M$$ is not diagonalizable?
+- How do we characterize stationary oscillations with spectral methods?
 - How does this connect to deterministic discrete linear dynamic systems?
