@@ -76,7 +76,10 @@ Therefore, the disc $$G_i(M)$$ is a subset of the unit circle that also intersec
 <!-- The same holds for the union of the discs, $$G(M)$$. -->
 Therefore, by Theorem 1, $$\sigma(M) \subseteq G(M) \subseteq \{ z \in \mathbb C : |z| \leq 1 \}$$.
 
-Here is an illustration of this proof for a Markov matrix in $$M_4([0,1])$$.
+Here is an illustration of this proof for a Markov matrix in $$M_4([0,1])$$.<span class="sidenote-number"></span>
+<span class="sidenote">
+    [This package](https://github.com/v715/gershgorin) can be used to visualize Gershgorin discs of a matrix.
+</span>
 Interestingly, this picture also shows us that the only way we can have an complex eigenvalue with magnitude 1 is if one of the $$M_{ii} = 0$$...
 more on this later.
 
