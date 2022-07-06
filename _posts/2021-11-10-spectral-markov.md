@@ -2,7 +2,7 @@
 layout: post
 excerpt_separator: <!--more-->
 title: Some Spectral Properties of Markov Chains
-description: Gershgorin and his Circles
+description: The power of Gershgorin and his Circles
 permalink: spectral-markov-chains/
 date: 2021-11-10
 ---
