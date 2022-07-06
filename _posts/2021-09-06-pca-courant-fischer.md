@@ -2,7 +2,7 @@
 layout: post
 excerpt_separator: <!--more-->
 title: Deriving PCA from the Courant–Fischer Theorem
-description: Practical applications of Fishkind's Matrix Analysis
+description: A direct application of Prof. Fishkind's Matrix Analysis course
 permalink: pca-courant-fischer/
 date: 2021-09-06
 ---
@@ -27,6 +27,7 @@ One view of PCA can be motivated by the following question:
 </blockquote>
 
 Represent one such high-dimensional data point with a random vector $$x \in \mathbb{R}^D$$ and assume the following:
+
 - $$\mathbb{E}[x] = 0$$ (i.e., the vector is *mean-centered*), and
 - $$\mathrm{rank}(\Sigma_x) \geq d$$, where $$\Sigma_x$$ is the covariance matrix of $$x$$ and $$d \ll D$$ is the dimensionality of our embedding.
 
@@ -46,7 +47,7 @@ $$\mathrm{Var}(y_1) \geq \cdots \geq \mathrm{Var}(y_d) > 0 \,.$$
 
 We can derive an important characterization of the PCs from this definition:
 
-**Lemma 1.** $$\mathrm{Var}(y_i) = u_i^* \Sigma_x u_i \,.$$
+**Lemma 1.** $$\mathrm{Var}(y_i) = u_i^*\Sigma_x u_i \,.$$
 \
 *Proof:*
 This follows from the definition of variance:
@@ -58,7 +59,7 @@ $$\require{cancel}
     &= \mathbb{E}[u_i^* x u_i^* x] &&\text{(By definition of $y_i$.)} \\
     &= \mathbb{E}[u_i^* x x^* u_i] &&\text{(The dot product is commutative.)} \\
     &= u_i^* \mathbb{E}[x x^*] u_i &&\text{(Expectation is linear.)} \\
-    &= u_i^* \Sigma_x u_i \,.
+    &= u_i^*\Sigma_x u_i \,.
 \end{align*}$$
 
 Therefore, we are looking for the vectors $$u_i$$ that maximize this [quadratic form](https://en.wikipedia.org/wiki/Quadratic_form)!
@@ -81,9 +82,9 @@ The Courant--Fischer Theorem provides a very useful bound on all possible quadra
 Let $$A \in M_n$$ be a Hermitian matrix with eigenvalues $$\lambda_1 \geq \cdots \geq \lambda_n$$ and corresponding eigenvectors $$u_1, \dots, u_n$$.
 Then,
 
-$$ \lambda_k = 
-\min_{\substack{\cal{V} \subseteq \mathbb{C}^n \\ \mathrm{dim}\cal{V} = n-k}} 
-\max_{\substack{x \in \cal{V}^\perp \\ x \neq \vec{0}}} 
+$$ \lambda_k =
+\min_{\substack{\cal{V} \subseteq \mathbb{C}^n \\ \mathrm{dim}\cal{V} = n-k}}
+\max_{\substack{x \in \cal{V}^\perp \\ x \neq \vec{0}}}
 \frac{x^* A x}{x^* x} \,. $$
 
 *Proof:*
@@ -111,8 +112,8 @@ with equality if $$w = u_k \Rightarrow \cal V^\perp = \mathrm{span}\{u_1, \dots,
 
 **Corollary 1.** As a direct consequence of the Courant--Fischer Theorem, for any matrix $$A$$ as in Theorem 1,
 
-$$ \lambda_k = 
-\max_{x \perp \{u_1, \dots, u_{k-1}\}} 
+$$ \lambda_k =
+\max_{x \perp \{u_1, \dots, u_{k-1}\}}
 \frac{x^* A x}{x^* x} \,. $$
 
 This vastly simplifies the constrained optimization problem presented in Lemma 1 -- no need for Lagrange multipliers!
@@ -120,7 +121,7 @@ This vastly simplifies the constrained optimization problem presented in Lemma 1
 ## Deriving PCA
 
 **Theorem 2 (Principal Component Analysis).**
-Given a random variable $$x$$ with covariance matrix $$\Sigma_x \in M_n$$ with eigenvalues $$\lambda_1 \geq \cdots \geq \lambda_n$$ and associated normalized eigenvectors $$u_1, \dots, u_n$$, the $$i$$-th principal component of $$x$$ is 
+Given a random variable $$x$$ with covariance matrix $$\Sigma_x \in M_n$$ with eigenvalues $$\lambda_1 \geq \cdots \geq \lambda_n$$ and associated normalized eigenvectors $$u_1, \dots, u_n$$, the $$i$$-th principal component of $$x$$ is
 
 $$ y_i = \langle u_i, x \rangle \,.$$
 
@@ -139,12 +140,12 @@ This implies that, unless $$\Sigma_x$$ is the zero matrix, $$\lambda_1 > 0 \Righ
     &= \mathbb{E}[u_1^* x u_2^* x] \\
     &= \mathbb{E}[u_1^* x x^* u_2] \\
     &= u_1^* \mathbb{E}[x x^*] u_2 \\
-    &= u_1^* \Sigma_x u_2 \\
+    &= u_1^*\Sigma_x u_2 \\
     &= (\Sigma_x u_1)^* u_2 \\
-    &= \lambda_1 u_1^* u_2 \,.
+    &= \lambda_1 u_1^*u_2 \,.
     \end{align*} $$
 </span>
-Therefore, 
+Therefore,
 
 $$ \max_{u \perp \{u_1\}} \mathrm{Var}(y_2) = \max_{u \perp \{u_1\}} \frac{u^* \Sigma_x u}{u^* u} = \lambda_2 \,.$$
 

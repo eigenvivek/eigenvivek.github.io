@@ -2,7 +2,7 @@
 layout: post
 excerpt_separator: <!--more-->
 title: A Quick Formulation of Compressed Sensing
-description: A very, very mininal explanation of where compressed sensing comes from.
+description: A very, very mininal derivation of compressed sensing
 permalink: compressed-sensing/
 date: 2021-12-27
 ---

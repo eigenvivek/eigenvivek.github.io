@@ -2,7 +2,7 @@
 layout: post
 excerpt_separator: <!--more-->
 title: Graph Cuts, Graph Laplacians, and λ2
-description: Another interesting eigenvalue application.
+description: Another interesting eigenvalue application!
 permalink: graph-cuts/
 date: 2022-01-31
 ---
