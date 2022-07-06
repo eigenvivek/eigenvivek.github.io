@@ -1,7 +1,7 @@
 ---
 layout: post
 excerpt_separator: <!--more-->
-title: The Linear Conjugate Gradient Method
+title: The Conjugate Gradient Method
 description: Geometric underpinnings, eigenvalues, and the convergence rate
 permalink: conjugate-gradient-method/
 date: 2022-07-06
@@ -12,12 +12,13 @@ The goals of this post are<span class="sidenote-number"></span>
     Notes from the Medical Vision Group's summer reading of *Numerical Optimization* by J. Nocedal, Stephen J. Wright, 1999.
 </span>
 
-1. To derive the linear conjugate gradient method, and
-2. Explain the connection between eigenvalues and the convergence rate.
+1. To derive the conjugate gradient method,
+2. Implement and benchmark various versions with Julia, and
+3. Explain the connection between eigenvalues and the convergence rate.
 
 ## Setup
 
-The goal of the linear conjugate gradient algorithm is to iteratively solve linear systems of the form
+The goal of the conjugate gradient algorithm is to iteratively solve linear systems of the form
 
 $$Ax = b \,,$$
 
@@ -176,3 +177,165 @@ function slow_conjgrad(
     return x, k
 end
 ```
+
+## Optimizing the conjugate gradient method
+
+We can exploit properties of our vectors to make the above algorithm faster.
+
+First, we characterize an interesting property of the residuals, $$r_k$$.
+Premulitplying (Eq. 1) by $$A$$ and subtracting $$b$$ from both sides yields
+
+$$ r_{k+1} = r_k + \alpha_kAp_k \,. \quad\quad\text{(Eq. 2)} $$
+
+If we look at the first iterate, we see
+
+$$
+\begin{align*}
+r_1^Tp_0
+&= r_0^T p_0 + \alpha_0p_0^TAp_0 \\
+&= r_0^T p_0 + \left(-\frac{p_0^Tr_0}{p_0^TAp_0}\right)p_0^TAp_0 \\
+&= \vec 0 \,,
+\end{align*}
+$$
+
+so, by induction, we can show that $$r_k^Tp_i = 0$$ for all $$i=0,\dots,k-1$$.
+That is, the residual is orthogonal to all previous search directions!
+
+### Simplifying $$\alpha_k$$
+
+Premultiply the search direction update by the residual, $$r_k \,:$$
+
+$$ -p_k^Tr_k = (-r_k)^T(-r_k) + \beta_k(-r_k)^Tp_{k-1} = r_k^Tr_k \,, $$
+
+since the residual $$r_k$$ and search direction $$p_{k-1}$$ are orthogonal.
+Therefore, we can simplify the calculation of $$\alpha_k \,:$$
+
+$$ \alpha_k = -\frac{p_k^Tr_k}{p_k^TAp_k} = \frac{r_k^Tr_k}{p_k^TAp_k} \,. $$
+
+### Simplifying $$\beta_k$$
+
+We get the simplification in two steps
+
+1. $$ \alpha_kAp_k = r_{k+1} - r_k \Longrightarrow \alpha_kr_{k+1}^TAp_k = r_{k+1}^Tr_{k+1} + r_{k+1}^Tr_k = r_{k+1}^Tr_{k+1} $$ since residuals are mutually orthogonal.
+2. $$ \alpha_k p_k^TAp_k = \left(\frac{r_k^Tr_k}{p_k^TAp_k}\right) p_k^TAp_k = r_k^Tr_k $$.
+
+Then,
+
+$$ \beta_{k+1} = \frac{p_{k}^TAr_{k+1}}{p_{k}^TAp_{k}} = \frac{\alpha_kp_{k}^TAr_{k+1}}{\alpha_kp_{k}^TAp_{k}} = \frac{r_{k+1}^Tr_{k+1}}{r_k^Tr_k} \,. $$
+
+This yields the most widely used form of the conjugate gradient method.<span class="sidenote-number"></span>
+<span class="sidenote">
+    We also store a few products at each iteration to optimize the implementation.
+</span>
+
+```julia
+function fast_conjgrad(
+    A::Matrix{Float64},  # Constraint matrix
+    b::Vector{Float64},  # Target
+    x::Vector{Float64};  # Initial guess
+    tol::Float64=10e-6   # Tolerance for early stop criterion
+)
+    k = 1
+    r = b - A * x
+    p = r
+    rsold = r' * r  # Avoid recomputing a vector-vector product
+    while sqrt(rsold) > tol
+        Ap = A * p  # Avoid recomputing a matrix-vector product
+        α = rsold / (p' * Ap)
+        x += α * p
+        r -= α * Ap
+        rsnew = r' * r
+        if sqrt(rsnew) < tol  # Add an early-stop condition
+            break
+        end
+        β = rsnew / rsold
+        p = r + β * p
+        rsold = rsnew
+        k += 1
+    end
+    return x, k
+end
+```
+
+## Benchmarking versions of the conjugate gradient method
+
+Finally, we can benchmark these two versions of the conjugate gradient method.
+Additionally, we will compare against a barebones implementation of gradient descent with line search:
+
+```julia
+function grad_descent(
+    A::Matrix{Float64},  # Constraint matrix
+    b::Vector{Float64},  # Target
+    x::Vector{Float64};  # Initial guess
+    tol::Float64=10e-6   # Tolerance for early stop criterion
+)
+    k = 1
+    r = A * x - b
+    rsquared = r' * r  # Avoid recomputing a vector-vector product
+    while sqrt(rsquared) > tol
+        α = -(rsquared) / (r' * A * r)
+        x = x + α * r
+        r = A * x - b
+        rsquared = r' * r
+        k += 1
+    end
+    return x, k
+end
+```
+
+To benchmark these algorithms, we will solve a linear system where the $$A \in M_n$$ matrix is the Hilbert matrix,<span class="sidenote-number"></span>
+<span class="sidenote">
+    That is $$(A)_{i,j} = {1}/({i + j - 1}) \,.$$
+</span> the target is $$b = (1, \dots, 1)^T$$, and the initial guess is $$x = (0, \dots, 0)^T$$.
+We compare the number of iterations required for the slow conjugate gradient, fast conjugate gradient, and standard gradient descent method ($$k_1$$, $$k_2$$, and $$k_3$$ respectively), as well as the memory requirements, for different matrix dimensions $$n \in \{2, 4, 6\}$$.
+
+```
+n = 2
+κ(A(n)) = 19.28
+  595.201 ns (22 allocations: 1.73 KiB)
+  446.126 ns (17 allocations: 1.34 KiB)
+  5.812 μs (200 allocations: 15.64 KiB)
+(k₁, k₂, k₃) = (3, 2, 40)
+n = 4
+κ(A(n)) = 15513.74
+  1.071 μs (38 allocations: 3.66 KiB)
+  814.062 ns (31 allocations: 3.00 KiB)
+  6.203 ms (201280 allocations: 18.43 MiB)
+(k₁, k₂, k₃) = (5, 4, 40256)
+n = 6
+κ(A(n)) = 1.495105864e7
+  2.583 μs (70 allocations: 7.91 KiB)
+  1.842 μs (59 allocations: 6.70 KiB)
+  5.621 s (136467940 allocations: 14.23 GiB)
+(k₁, k₂, k₃) = (9, 8, 27293588)
+```
+
+The fast conjugate gradient method is requires fewer iterations to achieve convergence and less memory allocation.
+Additionally, the standard gradient descent method requires an absurd number of iterations for a poorly conditioned matrix!
+
+To get a better comparison between the slow and fast versions of conjugate gradient method, we will use a larger matrix. However, any larger will take gradient descent too long, so we only compare our versions of conjugate gradient with $$n \in \{5, 8, 12, 20 \} \,.$$
+
+```
+n = 5
+κ(A(n)) = 476607.25
+  1.650 μs (54 allocations: 5.22 KiB)
+  1.225 μs (45 allocations: 4.38 KiB)
+(k₁, k₂) = (7, 6)
+n = 8
+κ(A(n)) = 1.525756434817e10
+  7.417 μs (198 allocations: 25.19 KiB)
+  4.238 μs (136 allocations: 17.44 KiB)
+(k₁, k₂) = (25, 19)
+n = 12
+κ(A(n)) = 2.2872145734707476e16
+  12.459 μs (262 allocations: 42.00 KiB)
+  5.389 μs (143 allocations: 23.41 KiB)
+(k₁, k₂) = (33, 20)
+n = 20
+κ(A(n)) = 4.377151386345373e16
+  50.333 μs (638 allocations: 142.59 KiB)
+  12.667 μs (234 allocations: 54.22 KiB)
+(k₁, k₂) = (80, 33)
+```
+
+At these larger sizes of $$A$$, the advantage of fast conjugate gradient is clearly appreciable!
