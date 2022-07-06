@@ -83,7 +83,7 @@ Here is an illustration of this proof for a Markov matrix in $$M_4([0,1])$$.<spa
 Interestingly, this picture also shows us that the only way we can have an complex eigenvalue with magnitude 1 is if one of the $$M_{ii} = 0$$...
 more on this later.
 
-![markov-gershgorin](../images/markov_gershgorin.png)
+![markov-gershgorin](../images/markov_gershgorin.svg)
 
 Next, we ask what is the largest eigenvalue of a Markov matrix?
 
