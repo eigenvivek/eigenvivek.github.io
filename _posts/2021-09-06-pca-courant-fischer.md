@@ -2,7 +2,7 @@
 layout: post
 excerpt_separator: <!--more-->
 title: Deriving PCA from the Courant–Fischer Theorem
-description: A direct application of Prof. Fishkind's Matrix Analysis course
+description: A variational eigenvalue characterization of principle components 
 permalink: pca-courant-fischer/
 date: 2021-09-06
 ---

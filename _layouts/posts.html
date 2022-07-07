@@ -15,7 +15,7 @@ layout: compress
     {% for post in site.posts %}
     <article>
         <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-        <span class="mini-note">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <span class="mini-note">{{ post.date | date: "%b %-d, %Y" }} ☾ {{ post.description }} </span>
     </article>
     {% endfor %}
 
