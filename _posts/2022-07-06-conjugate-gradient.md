@@ -16,6 +16,8 @@ The goals of this post are<span class="sidenote-number"></span>
 2. Implement and benchmark various versions with Julia, and
 3. Explain the connection between eigenvalues and the convergence rate.
 
+The code in this post can be viewed in a Jupyter Notebook [here](https://nbviewer.org/github/v715/v715.github.io/blob/assets/conjugate_gradient.ipynb).
+
 ## Setup
 
 The goal of the conjugate gradient algorithm is to iteratively solve linear systems of the form
@@ -339,3 +341,24 @@ n = 20
 ```
 
 At these larger sizes of $$A$$, the advantage of fast conjugate gradient is clearly appreciable!
+
+## The convergence rate and eigenvalue properties
+
+TODO :)
+
+<!-- There are many analyses of the convergence rate of conjugate gradient, which show that the convergence rate is $$\mathcal O(\sqrt{\kappa(A)})$$, where $$\kappa(A)$$ is the condition number of $$A$$.
+This is more efficient than the standard gradient descent method, which requires $$O(\kappa(A))$$ iterations.
+
+In addition to being faster than standard gradient descent, conjugate gradient also has an advantage when the eigenvalues of $$A$$ have a special structure.
+Specifically, if $$A$$ has eigenvalues $$0 < \lambda_1 \leq \cdots \leq \lambda_n $$, we have that
+
+$$ ||x_{k+1} - x^*||_A^2 \leq \left(\frac{\lambda_{n-k} - \lambda_1}{\lambda_{n-k} + \lambda_1}\right)^2 ||x_0 - x^*||_A^2 \,. $$
+
+This says that the bound on the decrease in error on the $$(k+1)$$-th iterate is proportional to the ratio $$\left(\frac{\lambda_{n-k} - \lambda_1}{\lambda_{n-k} + \lambda_1}\right)^2$$.
+By the triangle inequality, we have that
+
+$$
+\left(\frac{\lambda_{n-k} - \lambda_1}{\lambda_{n-k} + \lambda_1}\right)^2
+= \left(\frac{\lambda_{n-k} - \lambda_{n-k-1}}{\lambda_{n-k} + \lambda_{n-k-1}}\right)^2
+- \left(\frac{\lambda_{n-k-1} - \lambda_1}{\lambda_{n-k-1} + \lambda_1}\right)^2
+$$ -->
