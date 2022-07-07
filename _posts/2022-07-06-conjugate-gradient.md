@@ -16,7 +16,7 @@ The goals of this post are<span class="sidenote-number"></span>
 2. Implement and benchmark various versions with Julia, and
 3. Explain the connection between eigenvalues and the convergence rate.
 
-The code in this post can be viewed in a Jupyter Notebook [here](https://nbviewer.org/github/v715/v715.github.io/blob/assets/conjugate_gradient.ipynb).
+The code in this post can be viewed in a Jupyter Notebook [here](https://nbviewer.org/github/v715/v715.github.io/blob/main/assets/conjugate_gradient.ipynb).
 
 ## Setup
 
