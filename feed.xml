@@ -9,52 +9,52 @@
 
   <channel>
     <title>
-      <![CDATA[  Vivek Gopalakrishnan  ]]>
+      <![CDATA[  Franklin Template  ]]>
     </title>
-    <link> https://vivekg.dev/ </link>
+    <link> https://tlienart.github.io/FranklinTemplates.jl/ </link>
     <description>
-      <![CDATA[  Vivek&#39;s academic blog  ]]>
+      <![CDATA[  Example website using Franklin  ]]>
     </description>
     <atom:link
-      href="https://vivekg.dev/feed.xml"
+      href="https://tlienart.github.io/FranklinTemplates.jl/feed.xml"
       rel="self"
       type="application/rss+xml" />
 
 
 <item>
   <title>
-    <![CDATA[  Talks  ]]>
+    <![CDATA[  More goodies  ]]>
   </title>
-  <link> https://vivekg.dev/menu2/index.html </link>
-  <guid> https://vivekg.dev/menu2/index.html </guid>
+  <link>  </link>
+  <guid>  </guid>
   <description>
-    <![CDATA[  Academic talks and presentations.  ]]>
+    <![CDATA[  A short description of the page which would serve as <strong>blurb</strong> in a <code>RSS</code> feed; you can use basic markdown here but the whole description string must be a single line &#40;not a multiline string&#41;. Like this one for instance. Keep in mind that styling is minimal in RSS so for instance don&#39;t expect maths or fancy styling to work; images should be ok though: <img src="https://upload.wikimedia.org/wikipedia/en/b/b0/Rick_and_Morty_characters.jpg" alt="" />  ]]>
   </description>  
     
-  <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>  
+  <pubDate>Wed, 01 May 2019 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
-    <atom:name>Vivek Gopalakrishnan</atom:name>
+    <atom:name>Septimia Zenobia</atom:name>
   </atom:author>
         
 </item>
 
 <item>
   <title>
-    <![CDATA[  Posts  ]]>
+    <![CDATA[  Code blocks  ]]>
   </title>
-  <link> https://vivekg.dev/menu1/index.html </link>
-  <guid> https://vivekg.dev/menu1/index.html </guid>
+  <link> https://tlienart.github.io/FranklinTemplates.jl/menu1/index.html </link>
+  <guid> https://tlienart.github.io/FranklinTemplates.jl/menu1/index.html </guid>
   <description>
-    <![CDATA[  A collection of blog posts about math, machine learning, etc.  ]]>
+    <![CDATA[  A short description of the page which would serve as <strong>blurb</strong> in a <code>RSS</code> feed; you can use basic markdown here but the whole description string must be a single line &#40;not a multiline string&#41;. Like this one for instance. Keep in mind that styling is minimal in RSS so for instance don&#39;t expect maths or fancy styling to work; images should be ok though: <img src="https://upload.wikimedia.org/wikipedia/en/3/32/Rick_and_Morty_opening_credits.jpeg" alt="" />  ]]>
   </description>  
     
-  <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>  
+  <pubDate>Fri, 22 Mar 2019 00:00:00 +0000</pubDate>  
   
   
   <atom:author>
-    <atom:name>Vivek Gopalakrishnan</atom:name>
+    <atom:name>Septimia Zenobia</atom:name>
   </atom:author>
         
 </item>
