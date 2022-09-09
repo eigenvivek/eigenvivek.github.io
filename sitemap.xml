@@ -2,61 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/posts/pca-courant-fischer/index.html</loc>
+    <loc>https://vivekg.dev/404/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/404/index.html</loc>
+    <loc>https://vivekg.dev/talks/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/posts/unitary-matrices/index.html</loc>
+    <loc>https://vivekg.dev/posts/unitary-matrices/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/posts/conjugate-gradient/index.html</loc>
+    <loc>https://vivekg.dev/posts/conjugate-gradient/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/posts/graph-cuts/index.html</loc>
+    <loc>https://vivekg.dev/posts/graph-cuts/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/posts/spectral-markov/index.html</loc>
+    <loc>https://vivekg.dev/posts/pca-courant-fischer/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/posts/index.html</loc>
+    <loc>https://vivekg.dev/posts/farewell-jhu/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/index.html</loc>
+    <loc>https://vivekg.dev/posts/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/posts/compressed-sensing/index.html</loc>
+    <loc>https://vivekg.dev/posts/compressed-sensing/index.html</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://tlienart.github.io/FranklinTemplates.jl/posts/farewell-jhu/index.html</loc>
+    <loc>https://vivekg.dev/posts/spectral-markov/index.html</loc>
+    <lastmod>2022-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://vivekg.dev/index.html</loc>
+    <lastmod>2022-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://vivekg.dev/talks/_site/DiffDRR/</loc>
+    <lastmod>2022-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://vivekg.dev/talks/DiffDRR/</loc>
     <lastmod>2022-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
