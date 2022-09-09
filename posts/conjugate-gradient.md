@@ -176,14 +176,12 @@ $$ r_{k+1} = r_k + \alpha_kAp_k \,. \quad\quad\text{(Eq. 2)} $$
 
 If we look at the first iterate, we see
 
-$$
 \begin{align*}
 r_1^Tp_0
 &= r_0^T p_0 + \alpha_0p_0^TAp_0 \\
 &= r_0^T p_0 + \left(-\frac{p_0^Tr_0}{p_0^TAp_0}\right)p_0^TAp_0 \\
 &= \vec 0 \,,
 \end{align*}
-$$
 
 so, by induction, we can show that $r_k^Tp_i = 0$ for all $i=0,\dots,k-1$.
 That is, the residual is orthogonal to all previous search directions!
