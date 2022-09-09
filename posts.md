@@ -1,12 +1,3 @@
-<!-- +++
-title = "Posts"
-hascode = true
-date = Date(2022, 09, 09)
-rss = "A collection of blog posts about math, machine learning, etc."
-
-tags = ["syntax", "code"]
-+++ -->
-
 @def title = "Posts"
 
 **A collection of blog posts about math, machine learning, etc.**
