@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:georss="http://www.georss.org/georss">
+
+  <channel>
+    <title>
+      <![CDATA[  Vivek Gopalakrishnan  ]]>
+    </title>
+    <link> https://vivekg.dev/ </link>
+    <description>
+      <![CDATA[  Vivek&#39;s academic blog  ]]>
+    </description>
+    <atom:link
+      href="https://vivekg.dev/feed.xml"
+      rel="self"
+      type="application/rss+xml" />
+
+
+<item>
+  <title>
+    <![CDATA[  Talks  ]]>
+  </title>
+  <link> https://vivekg.dev/menu2/index.html </link>
+  <guid> https://vivekg.dev/menu2/index.html </guid>
+  <description>
+    <![CDATA[  Academic talks and presentations.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Vivek Gopalakrishnan</atom:name>
+  </atom:author>
+        
+</item>
+
+<item>
+  <title>
+    <![CDATA[  Posts  ]]>
+  </title>
+  <link> https://vivekg.dev/menu1/index.html </link>
+  <guid> https://vivekg.dev/menu1/index.html </guid>
+  <description>
+    <![CDATA[  A collection of blog posts about math, machine learning, etc.  ]]>
+  </description>  
+    
+  <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>  
+  
+  
+  <atom:author>
+    <atom:name>Vivek Gopalakrishnan</atom:name>
+  </atom:author>
+        
+</item>
+</channel></rss>
