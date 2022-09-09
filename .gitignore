@@ -1,9 +1,4 @@
-.ipynb_checkpoints/
-
-_site/
-_drafts/
-.jekyll-metadata
-Gemfile.lock
+__site/
 .DS_Store
-
-how-to-tufte-manual.md
+node_modules/
+package-lock.json
