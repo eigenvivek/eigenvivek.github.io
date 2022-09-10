@@ -28,6 +28,7 @@ Vivek Gopalakrishnan and Polina Golland
 <img src="../logos/csail-logo.png", align='top' width=50> [MIT CSAIL](https://csail.mit.edu/)
 
 
+<!-- What are DRRs? -->
 ---
 # What are DRRs?
 
@@ -54,6 +55,7 @@ Vivek Gopalakrishnan and Polina Golland
 
 <center><img src="../images/DiffDRR/schematic.003.png" width="100%"></center>
 
+<!-- DRR applications -->
 ---
 # DRRs are used in many algorithms
 
@@ -69,6 +71,7 @@ Vivek Gopalakrishnan and Polina Golland
 
 <small>Franz *et al*. "Volumetric reconstruction from a limited number of digitally reconstructed radiographs using CNNs." *Proc. of the OAGM Workshop.* 2018.</small>
 
+<!-- DRR optimization -->
 ---
 # Optimizing DRR parameters is slow
 
@@ -114,12 +117,33 @@ Vivek Gopalakrishnan and Polina Golland
 
 <center><img src="../images/DiffDRR/optimization.009.png" width="100%"></center>
 
+<!-- Analogy to inverse graphics -->
 ---
 # Try an inverse graphics approach
 
+Existing DRR generators are <u>simple renderers</u>:
+
+- ✅ They solve the *forward process* of image syntheis quickly.
+
+- ❌ They are not differentiable.
+
+<u>Differentiable renderer</u> explicitly models the relationship between changes in model parameters and synthesized images.
+
+- ✅ They solve the *forward process* of image syntheis quickly.
+
+- ✅ They solve the *backward process* of image optimization quickly (auto-differentiablility!).
+
+<!-- Introduce our model -->
 ---
 # Our auto-differentiable DRR renderer
 
+$$ \mathrm{DRR}~_{\theta, \varphi, \gamma, b_x, b_y, b_z} : CT \mapsto X $$
+
+<center><img src="../images/DiffDRR/siddon.001.png" width="80%"></center>
+
+<small>
+    Siddon. "Fast calculation of the exact radiological path for a three-dimensional CT array." *Medical Physics*, 1985.
+</small>
 
 ---
 # Example: 2D-to-3D registration (6 DoF)
