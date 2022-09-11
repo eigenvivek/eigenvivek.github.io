@@ -124,6 +124,31 @@ Vivek Gopalakrishnan and Polina Golland
 
 Existing DRR generators are <u>simple renderers</u>:
 
+---
+# Try an inverse graphics approach
+
+Existing DRR generators are <u>simple renderers</u>:
+
+- ✅ They solve the *forward process* of image syntheis quickly.
+
+- ❌ They are not differentiable.
+
+---
+# Try an inverse graphics approach
+
+Existing DRR generators are <u>simple renderers</u>:
+
+- ✅ They solve the *forward process* of image syntheis quickly.
+
+- ❌ They are not differentiable.
+
+<u>Differentiable renderer</u> explicitly models the relationship between changes in model parameters and synthesized images.
+
+---
+# Try an inverse graphics approach
+
+Existing DRR generators are <u>simple renderers</u>:
+
 - ✅ They solve the *forward process* of image syntheis quickly.
 
 - ❌ They are not differentiable.
@@ -138,9 +163,14 @@ Existing DRR generators are <u>simple renderers</u>:
 ---
 # Our auto-differentiable DRR renderer
 
-$$ \mathrm{DRR}~_{\theta, \varphi, \gamma, b_x, b_y, b_z} : CT \mapsto X $$
 
-<center><img src="../images/DiffDRR/siddon.001.png" width="80%"></center>
+<center><img src="../images/DiffDRR/siddon.001.png" width="100%"></center>
+
+---
+# Our auto-differentiable DRR renderer
+
+
+<center><img src="../images/DiffDRR/siddon.002.png" width="100%"></center>
 
 <small>
     Siddon. "Fast calculation of the exact radiological path for a three-dimensional CT array." *Medical Physics*, 1985.
