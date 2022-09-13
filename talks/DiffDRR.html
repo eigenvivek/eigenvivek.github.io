@@ -28,17 +28,6 @@ Vivek Gopalakrishnan and Polina Golland
 <img src="../logos/hst-logo.png" align='top' width=50> [Harvard-MIT HST](https://hst.mit.edu/) |
 <img src="../logos/csail-logo.png", align='top' width=50> [MIT CSAIL](https://csail.mit.edu/)
 
----
-# Overview
-
-- What are DRRs?
-
-- Limitations of current DRR generators (optimization)
-
-- Our auto-differentiable DRR generator
-
-- Example: 2D-to-3D registration
-
 <!-- What are DRRs? -->
 ---
 # What are DRRs?
@@ -68,15 +57,15 @@ Vivek Gopalakrishnan and Polina Golland
 
 <!-- DRR applications -->
 ---
-# DRRs are used in many algorithms
+# DRRs are used in many medical imaging algorithms
 
 ---
-# DRRs are used in many algorithms
+# DRRs are used in many medical imaging algorithms
 
 <center><img src="../images/DiffDRR/applications.001.png" width="90%"></center>
 
 ---
-# DRRs are used in many algorithms
+# DRRs are used in many medical imaging algorithms
 
 <center><img src="../images/DiffDRR/applications.002.png" width="90%"></center>
 
@@ -194,6 +183,47 @@ Existing DRR generators are <u>simple renderers</u>:
 <!-- Registration model -->
 ---
 # Example: 2D-to-3D registration (6 DoF)
+<br>
+<center><img src="../images/DiffDRR/optim_comps/still_conv_nelder.gif" width="100%"></center>
+
+
+---
+# Example: 2D-to-3D registration (6 DoF)
+<br>
+<center><img src="../images/DiffDRR/optim_comps/conv_nelder.gif" width="100%"></center>
+
+---
+# Example: 2D-to-3D registration (6 DoF)
+<br>
+<center><img src="../images/DiffDRR/optim_comps/conv_graddesc.gif" width="100%"></center>
+
+
+---
+# Example: 2D-to-3D registration (6 DoF)
+<br>
+<center><img src="../images/DiffDRR/optim_comps/conv_momentum.gif" width="100%"></center>
+
+---
+# Example: 2D-to-3D registration (6 DoF)
+<br>
+<center><img src="../images/DiffDRR/optim_comps/noconv_nelder.gif" width="100%"></center>
+
+---
+# Example: 2D-to-3D registration (6 DoF)
+<br>
+<center><img src="../images/DiffDRR/optim_comps/noconv_graddesc.gif" width="100%"></center>
+
+
+---
+# Example: 2D-to-3D registration (6 DoF)
+<br>
+<center><img src="../images/DiffDRR/optim_comps/noconv_momentum.gif" width="100%"></center>
+
+---
+# Example: 2D-to-3D registration (6 DoF)
+
+- Gradient descent is more robust (600/1000 vs 200/1000 successes)
+- Gradient descent is faster, momentum even so
 
 <small>
 Additional results in the paper:
