@@ -1,4 +1,4 @@
-# Graph Cuts, Graph Laplacians, and λ2
+# Graph Cuts, Graph Laplacians, and $\lambda_2$
 2022-01-31 | *Another interesting eigenvalue application!*
 
 ## Defining the Graph Cut Problem
