@@ -30,7 +30,7 @@ That is,
     &= (P_{x_1} + \cdots + P_{x_n}) y \\
     &= P_{x_1} y + \cdots + P_{x_n} y \\
     &= c_1 x_1 + \cdots + c_n x_n \\
-    &= y \,, 
+    &= y \,, &&\text{(It's just a change of basis!)}
 \end{align}
 
 implying that $$UU^* = I \,.$$
