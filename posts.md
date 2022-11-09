@@ -10,7 +10,7 @@ Jul 6, 2022 ☾ *Geometric underpinnings, eigenvalues, and the convergence rate*
 \
 May 28, 2022 ☾ *Why are the rows orthonormal?*
 
-[Graph Cuts, Graph Laplacians, and λ2](graph-cuts/)
+[Graph Cuts, Graph Laplacians, and $\lambda_2$](graph-cuts/)
 \
 Jan 31, 2022 ☾ *Another interesting eigenvalue application!*
 
