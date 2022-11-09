@@ -25,15 +25,13 @@ $$ UU^* = \sum_{i=1}^n x_i x_i^* = P_{x_1} + \cdots + P_{x_n} = I \,. $$
 Here's why the last equality holds: since the vectors $\{x_1, \dots, x_n\}$ form a basis over $\mathbb{C}^n$, the sum of $n$ rank-one projection matrices forms a projection into $\mathbb C^n \,.$ Therefore, multiplying a vector $y \in \mathbb C^n$ by the matrix $UU^*= (P_{x_1} + \cdots + P_{x_n})$ results in no loss of dimensionality since we are projecting onto the full vector space $\mathbb C^n$.
 That is,
 
-$$
 \begin{align}
     UU^* y
     &= (P_{x_1} + \cdots + P_{x_n}) y \\
     &= P_{x_1} y + \cdots + P_{x_n} y \\
     &= c_1 x_1 + \cdots + c_n x_n \\
-    &= y \,, &&\text{(It's just a change of basis!)}
+    &= y \,, 
 \end{align}
-$$
 
 implying that $$UU^* = I \,.$$
 
