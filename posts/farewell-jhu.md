@@ -1,5 +1,5 @@
 # Farewell Hopkins (For Now...)
-2021-05-17 | *Thank you very much JHU*
+2021-05-17 ☾ *Thank you very much JHU*
 
 I am eternally grateful to the Department of Biomedical Engineering and the Whiting School of Engineering at Johns Hopkins University for creating an environment wherein my academic curiosity and research interests could flourish. I will never forget the privilege of leading an Undergraduate BME Design Team or my amazement when, during a dissection in Computational Cardiology Lab, a decapitated bullfrog autonomically flipped over off its back and started breathing. Over these past four years, I have lost track of how many times I have felt inspired by the knowledge surrounding me.
 

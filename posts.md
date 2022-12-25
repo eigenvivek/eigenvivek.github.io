@@ -2,6 +2,10 @@
 
 **A collection of blog posts about math, machine learning, etc.**
 
+[Dual of the Fourier Slice Theorem](dual-fourier-slice/) 
+\
+2022-12-25 ☾ *Swapping slices and projections and space and frequency*
+
 [The Conjugate Gradient Method](conjugate-gradient/) 
 \
 Jul 6, 2022 ☾ *Geometric underpinnings, eigenvalues, and the convergence rate*

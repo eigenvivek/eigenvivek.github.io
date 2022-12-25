@@ -1,5 +1,5 @@
 # Deriving PCA from the Courant--Fischer Theorem
-2021-09-06 | *A variational eigenvalue characterization of principle components*
+2021-09-06 ☾ *A variational eigenvalue characterization of principle components*
 
 Principal Component Analysis (PCA) is one of my favorite algorithms because (1) it is foundational and broadly applicable, and (2) it can be derived using approaches from many different mathematical fields.[^1]
 
@@ -82,12 +82,12 @@ Because $A$ is Hermitian, it is unitarily diagonalizable. Let $\cal{U} = \mathrm
 
 Let $w \in \cal U \cap \cal V^\perp$ and express $ w = \sum_{i=1}^k c_i u_i $ (a linear combination of the first $k$ eigenvectors). Then,
 
-$$ \begin{align*}
+\begin{align*}
     \frac{w^* A w}{w^* w}
     = \frac{\sum_{i=1}^k \lambda_i c_i^2}{\sum_{i=1}^k c_i^2}
     \geq \lambda_k \frac{\sum_{i=1}^k c_i^2}{\sum_{i=1}^k c_i^2}
     = \lambda_k \,,
-\end{align*} $$
+\end{align*}
 
 with equality if $w = u_k \Rightarrow \cal V^\perp = \mathrm{span}\{u_1, \dots, u_{k-1}\} \,.$
 

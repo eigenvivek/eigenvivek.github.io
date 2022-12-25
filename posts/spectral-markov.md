@@ -1,5 +1,5 @@
 # Some Spectral Properties of Markov Chains
-2021-11-10 | *The power of Gershgorin and his Circles*
+2021-11-10 ☾ *The power of Gershgorin and his Circles*
 
 Markov chains are stoachastic models for describing discrete sequences of random behavior.
 While I normally dislike probability theory because I find it incredibly confusing, I like Markov chains because they can be expressed using linear algebra (which I find much less confusing!).

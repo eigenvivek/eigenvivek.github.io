@@ -1,5 +1,5 @@
 # A Quick Formulation of Compressed Sensing
-2021-12-27 | *A very, very mininal derivation of the optimization*
+2021-12-27 ☾ *A very, very mininal derivation of the optimization*
 
 Compressed sensing is a singal processing method for reconstructing a signal from an undersampled set of measurements.
 Here, we will derive the optimization problem at the core of compressed sensing.
