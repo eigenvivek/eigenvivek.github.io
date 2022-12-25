@@ -82,12 +82,12 @@ Because $A$ is Hermitian, it is unitarily diagonalizable. Let $\cal{U} = \mathrm
 
 Let $w \in \cal U \cap \cal V^\perp$ and express $ w = \sum_{i=1}^k c_i u_i $ (a linear combination of the first $k$ eigenvectors). Then,
 
-$$ \begin{align*}
+\begin{align*}
     \frac{w^* A w}{w^* w}
     = \frac{\sum_{i=1}^k \lambda_i c_i^2}{\sum_{i=1}^k c_i^2}
     \geq \lambda_k \frac{\sum_{i=1}^k c_i^2}{\sum_{i=1}^k c_i^2}
     = \lambda_k \,,
-\end{align*} $$
+\end{align*}
 
 with equality if $w = u_k \Rightarrow \cal V^\perp = \mathrm{span}\{u_1, \dots, u_{k-1}\} \,.$
 
