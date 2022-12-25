@@ -1,5 +1,5 @@
 # A Fun Interpretation of Unitary Matrices
-2022-05-28 | *Why are the rows orthonormal?*
+2022-05-28 ☾ *Why are the rows orthonormal?*
 
 This is a proof that if the columns of the matrix are orthonormal, then the rows are also orthonormal.
 

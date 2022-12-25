@@ -1,5 +1,5 @@
 # Deriving PCA from the Courant--Fischer Theorem
-2021-09-06 | *A variational eigenvalue characterization of principle components*
+2021-09-06 ☾ *A variational eigenvalue characterization of principle components*
 
 Principal Component Analysis (PCA) is one of my favorite algorithms because (1) it is foundational and broadly applicable, and (2) it can be derived using approaches from many different mathematical fields.[^1]
 

@@ -1,5 +1,5 @@
 # The Conjugate Gradient Method
-2022-07-06 | *Geometric underpinnings, eigenvalues, and the convergence rate*
+2022-07-06 ☾ *Geometric underpinnings, eigenvalues, and the convergence rate*
 
 The goals of this post are:[^1]
 
