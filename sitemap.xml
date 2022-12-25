@@ -3,79 +3,85 @@
 
 <url>
     <loc>https://vivekg.dev/404/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/talks/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/posts/unitary-matrices/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://vivekg.dev/posts/dual-fourier-slice/index.html</loc>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/posts/conjugate-gradient/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/posts/graph-cuts/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/posts/pca-courant-fischer/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/posts/farewell-jhu/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/posts/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/posts/compressed-sensing/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/posts/spectral-markov/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/index.html</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/talks/DiffDRR/index/</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
     <loc>https://vivekg.dev/talks/MCC/index/</loc>
-    <lastmod>2022-11-29</lastmod>
+    <lastmod>2022-12-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
