@@ -1,4 +1,0 @@
-Sitemap: https://vivekg.dev/sitemap.xml
-
-User-agent: *
-Disallow:

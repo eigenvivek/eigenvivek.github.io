@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Dual of the Fourier Slice Theorem</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">vivek's site</div>
+<div class="menu-item"><a href="index.html">about</a></div>
+<div class="menu-item"><a href="../assets/Vivek_Gopalakrishnan_CV.pdf" target="blank">cv</a></div>
+<div class="menu-category">research</div>
+<div class="menu-item"><a href="papers.html">papers&nbsp;(full&nbsp;list&nbsp;coming&nbsp;soon!)</a></div>
+<div class="menu-item"><a href="talks.html">talks</a></div>
+<div class="menu-category">software</div>
+<div class="menu-item"><a href="https://vivekg.dev/DiffDRR" target="blank">DiffDRR</a></div>
+<div class="menu-category">blog</div>
+<div class="menu-item"><a href="dual-fourier-slice.html" class="current">dual&nbsp;of&nbsp;the&nbsp;fourier&nbsp;slice&nbsp;theorem</a></div>
+<div class="menu-item"><a href="conjugate-gradient.html">the&nbsp;conjugate&nbsp;gradient&nbsp;method</a></div>
+<div class="menu-item"><a href="unitary-matrices.html">a&nbsp;fun&nbsp;interpretation&nbsp;of&nbsp;unitary&nbsp;matrices</a></div>
+<div class="menu-item"><a href="graph-cuts.html">graph&nbsp;cuts,&nbsp;laplacians,&nbsp;and&nbsp;\(\lambda_2\)</a></div>
+<div class="menu-item"><a href="compressed-sensing.html">compressed&nbsp;sensing</a></div>
+<div class="menu-item"><a href="spectral-markov.html">spectral&nbsp;properties&nbsp;of&nbsp;markov&nbsp;chains</a></div>
+<div class="menu-item"><a href="pca-courant-fischer.html">pca&nbsp;via&nbsp;the&nbsp;courant-fischer&nbsp;theorem</a></div>
+<div class="menu-item"><a href="farewell-hopkins.html">farewell&nbsp;hopkins&nbsp;(for&nbsp;now&hellip;)</a></div>
+<div class="menu-category">teaching</div>
+<div class="menu-item"><a href="https://neurodatadesign.io/" target="blank">Neuro&nbsp;Data&nbsp;Design&nbsp;(JHU)</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Dual of the Fourier Slice Theorem</h1>
+<div id="subtitle">2022-12-25 ☾ <b>Swapping slices and projections and spaces and frequencies</b>
+</div>
+</div>
+<p>The Fourier Slice Theorem is a classical result in signal processing result that establishes an equivalence between projections in the spatial domain and slices in the frequency domain. It's very useful for image reconstruction tasks, particularly in medical imaging (e.g., reconstructing 3D CT and MRI volumes from 2D images).
+</p>
+<h2>The Fourier Slice Theorem</h2>
+<p>In 3D volume of data \(\mathbf V : \mathbb R^3 \mapsto \mathbb R\), the Fourier Slice Theorem states that (the Fourier transform of a projection of \(\mathbf V\)) is equal to (an orthogonal slice of the Fourier transform of \(\mathbf V\)).
+</p>
+<p><b>Theorem 1 (Fourier Slice Theorem).</b> \(p_\theta(\mathbf V) = \mathcal F^{-1} \circ S_{\theta^\perp} \circ \mathcal F(\mathbf V)\) where \(p_\theta(\cdot)\) is a projection in the spatial domain via rays at angle \(\theta\), \(S_{\theta^\perp}(\cdot)\) is an orthogonal slice in the frequency domain at angle \(\theta^\perp\), and \(\mathcal F(\cdot)\) is the Fourier transform.
+</p>
+<p>For illustration, we provide a proof of the Fourier Slice Theorem in 2D, although these ideas can be generalized to arbitrary dimensions.
+</p>
+<p>Simplifications:
+</p>
+<ul>
+<li><p>The Fourier transform is equivariant to rotation (i.e., \(\mathcal F \circ R = R \circ \mathcal F\) where \(R\) is a rotation matrix), so we can assume \(\theta = 0\) (i.e., we are projecting onto the \(x\)-axis) without loss of generality.
+</p>
+</li>
+<li><p>Projection onto the \(x\)-axis is invariant to the \(y\)-intercept, so we can assume \(y = 0\) without loss of generality.
+</p>
+</li>
+</ul>
+<p>Preliminary objects:
+</p>
+<ul>
+<li><p>Let \(f : \mathbb R^2 \to \mathbb R\) be a continuous representation of 2D image.
+</p>
+</li>
+<li><p>Let \(p(x) = \int_{\mathbb R} f(x, y) \mathrm{d}y\) be the projection of \(f\) onto the \(x\)-axis.
+</p>
+</li>
+<li><p>\(F(k_x, k_y) = \iint_{\mathbb R^2} f(x,y) e^{-2\pi i (xk_x + yk_y)} \mathrm{d}x \mathrm{d}y\) is the 2D Fourier transform of \(f\).
+</p>
+</li>
+</ul>
+<p>Using these definitions, we can derive
+</p>
+<p style="text-align:center">
+\[
+\require{cancel}
+\begin{align*}
+    S(k_x)
+    &amp;= F(k_x, 0) \\
+    &amp;= \iint_{\mathbb R^2} f(x,y) e^{-2\pi i (xk_x + y\cancel{k_y})} \mathrm{d}x \mathrm{d}y \\
+    &amp;= \int_{\mathbb R} \left( \int_{\mathbb R} f(x, y) \mathrm{d}y \right) e^{-2\pi i xk_x} \mathrm{d}x \\
+    &amp;= \int_{\mathbb R} p(x) e^{-2\pi i xk_x} \mathrm{d}x \\
+    &amp;= P(k_x) \,,
+\end{align*}
+\]
+</p><p>where \(P(\cdot)\) is the Fourier transform of the projection \(p(\cdot)\).
+This establishes the 2D version of the Fourier Slice Theorem.
+</p>
+<h2>Dual of the Fourier Slice Theorem</h2>
+<p>Using the same machinery, we can derive a dual of the Fourier Slice Theorem with projection in the frequency domain and slicing in the spatial domain.
+</p>
+<p><b>Theorem 2 (Dual of the Fourier Slice Theorem).</b> \(P_\theta(\mathbf V) = \mathcal F^{-1} \circ P_{\theta^\perp} \circ \mathcal F(\mathbf V)\).
+</p>
+<p>Preliminary objects:
+</p>
+<ul>
+<li><p>Let \(P(k_x) = \int_{\mathbb R} F(k_x, k_y) \mathrm{d}k_y\) be the projectino of \(F\) onto the \(k_x\)-axis.
+</p>
+</li>
+<li><p>\(f(x, y) = \iint_{\mathbb R^2} F(k_x, k_y) e^{2\pi i (xk_x + yk_y)} \mathrm{d}k_x \mathrm{d}k_y\) be the 2D inverse Fourier transform of \(F\).
+</p>
+</li>
+</ul>
+<p>Similarly, we can derive
+</p>
+<p style="text-align:center">
+\[
+\require{cancel}
+\begin{align*}
+    s(x)
+    &amp;= f(x, 0) \\
+    &amp;= \iint_{\mathbb R^2} F(k_x, k_y) e^{2\pi i (xk_x + \cancel{y}k_y)} \mathrm{d}k_x \mathrm{d}k_y \\
+    &amp;= \int_{\mathbb R} \left( \int_{\mathbb R} F(k_x, k_y) \mathrm{d}k_y \right) e^{2\pi i xk_x} \mathrm{d}k_x \\
+    &amp;= \int_{\mathbb R} P(k_x) e^{2\pi i xk_x} \mathrm{d}k_x \\
+    &amp;= p(x) \,,
+\end{align*}
+\]
+</p><p>where \(s(\cdot)\) is the inverse Fourier transform of \(S(\cdot)\).
+This establishes a duality for slicing and projection in the spatial and frequency domains, respectively.
+</p>
+<h2>Etymological Implications</h2>
+<p>The most immediate utility of this result is in helping to unify the meaning of <b>tomography</b>. By <a href="https://en.wikipedia.org/wiki/Tomography" target=&ldquo;blank&rdquo;>Wikipedia's definition</a>,
+</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p>The word <b>tomography</b> is derived from Ancient Greek τόμος tomos, &ldquo;slice, section&rdquo; and γράφω graphō, &ldquo;to write&rdquo; or, in this context as well, &ldquo;to describe.&rdquo;
+</p>
+</div></div>
+<p>In modern engineering, tomography  grefers to the acquisition of image slices via a penetrating wave. It encompasses many modalities beyond medical imaging, such as sonar and radar.
+However, within medical imaging, many modalities that do not involve slicing are often referred to as tomographic, such as X-ray imagign and CT.
+The Fourier Slice Theorem and the dual proved herein can help to unify these definitions.
+</p>
+<ul>
+<li><p><b>X-ray:</b> The Fourier Slice Theorem shows that X-ray projections in the spatial domain are equivalent to orthogonal slices in the frequency domain. Slicing = tomography!
+</p>
+</li>
+<li><p><b>CT:</b> CTs are reconstructed from multiple X-ray images acquired at different angles, so therefore, they are also tomographic.
+</p>
+</li>
+<li><p><b>MRI:</b> MRI machines acquire slices of the frequency domain, so they too are tomographic.
+</p>
+</li>
+<li><p><b>Ultrasound:</b> Acoustic waves are used to acquire slices of the spatial domain in ultrasound. The dual theorem shows that these slices are equivalent to projections in the frequency domain.
+</p>
+</li>
+</ul>
+<p>In this way, the Fourier Slice Theorem can help to unify the meaning of tomography across many modalities.</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2023-02-27 18:15:17 UTC, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

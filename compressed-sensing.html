@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>A Quick Formulation of Compressed Sensing</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">vivek's site</div>
+<div class="menu-item"><a href="index.html">about</a></div>
+<div class="menu-item"><a href="../assets/Vivek_Gopalakrishnan_CV.pdf" target="blank">cv</a></div>
+<div class="menu-category">research</div>
+<div class="menu-item"><a href="papers.html">papers&nbsp;(full&nbsp;list&nbsp;coming&nbsp;soon!)</a></div>
+<div class="menu-item"><a href="talks.html">talks</a></div>
+<div class="menu-category">software</div>
+<div class="menu-item"><a href="https://vivekg.dev/DiffDRR" target="blank">DiffDRR</a></div>
+<div class="menu-category">blog</div>
+<div class="menu-item"><a href="dual-fourier-slice.html">dual&nbsp;of&nbsp;the&nbsp;fourier&nbsp;slice&nbsp;theorem</a></div>
+<div class="menu-item"><a href="conjugate-gradient.html">the&nbsp;conjugate&nbsp;gradient&nbsp;method</a></div>
+<div class="menu-item"><a href="unitary-matrices.html">a&nbsp;fun&nbsp;interpretation&nbsp;of&nbsp;unitary&nbsp;matrices</a></div>
+<div class="menu-item"><a href="graph-cuts.html">graph&nbsp;cuts,&nbsp;laplacians,&nbsp;and&nbsp;\(\lambda_2\)</a></div>
+<div class="menu-item"><a href="compressed-sensing.html">compressed&nbsp;sensing</a></div>
+<div class="menu-item"><a href="spectral-markov.html">spectral&nbsp;properties&nbsp;of&nbsp;markov&nbsp;chains</a></div>
+<div class="menu-item"><a href="pca-courant-fischer.html">pca&nbsp;via&nbsp;the&nbsp;courant-fischer&nbsp;theorem</a></div>
+<div class="menu-item"><a href="farewell-hopkins.html">farewell&nbsp;hopkins&nbsp;(for&nbsp;now&hellip;)</a></div>
+<div class="menu-category">teaching</div>
+<div class="menu-item"><a href="https://neurodatadesign.io/" target="blank">Neuro&nbsp;Data&nbsp;Design&nbsp;(JHU)</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>A Quick Formulation of Compressed Sensing</h1>
+<div id="subtitle">2021-12-27 ☾ <b>A very, very mininal derivation of the optimization</b>
+</div>
+</div>
+<p>Compressed sensing is a signal processing method for reconstructing a signal from an undersampled set of measurements.
+Here, we will derive the optimization problem at the core of compressed sensing.
+</p>
+<ul>
+<li><p>Let \(x\) be the true signal.
+</p>
+</li>
+<li><p>Let \(x \stackrel{\mathcal U}{\mapsto} s\) be the representation of \(x\) in a functional basis space.
+</p>
+</li>
+<li><p>Let \(x = \Psi s\) for some universal transform basis \(\Psi\) (e.g., Fourier, wavelet, etc.).
+</p>
+</li>
+<li><p>Let \(y = Cx\) be the <b>measured</b> signal, where \(C\) is the measurement matrix.
+</p>
+</li>
+</ul>
+<p>Our objective is to obtain a <b>subsampled</b> version of \(s\) from \(y\), and then recover \(s \stackrel{\mathcal U^{-1}}{\mapsto} x\),
+i.e.,
+</p>
+<p style="text-align:center">
+\[
+\begin{equation}
+    \min_s \frac{1}{2} ||y - C\Psi s||_2^2 \,.
+\end{equation}
+\]
+</p><p>As stated, this optimization is a underspecified / indeterminate problem (i.e., there are infinitely many solutions for \(s\)),
+so we constrain the solutions to be sparse:
+</p>
+<p style="text-align:center">
+\[
+\begin{equation}
+    \min_s \frac{1}{2} ||y - C\Psi s||_2^2 + \lambda||s||_0 \,.
+\end{equation}
+\]
+</p><p>However, minimizing \(l_0\) norms is NP hard (because it requires combinatorial optimization), so we relax the problem with the \(l_1\) norm:
+</p>
+<p style="text-align:center">
+\[
+\begin{equation}
+    \min_s \frac{1}{2} ||y - C\Psi s||_2^2 + \lambda||s||_1 \,.
+\end{equation}
+\]
+</p><p>This is a well-defined problem, and is solvable with linear programming (e.g., basis pursuit, denoising/matching).
+Additionally, Equation 3 is equivalent to Equation 2 under certain conditions (e.g., \(\nu\)-incoherence) and constraints on \(C\Psi\).
+Then, given a noisy, downsampled measurement \(y\), solve Equation 3 to get \(\hat s\), and predict the original signal to be \(\hat x = \Psi \hat s\) which is equivalent to \(\hat s \stackrel{\mathcal U^{-1}}{\mapsto} \hat x\).
+</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2023-02-27 18:15:17 UTC, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

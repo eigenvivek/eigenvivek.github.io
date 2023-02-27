@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Deriving PCA from the Courant&ndash;Fischer Theorem</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">vivek's site</div>
+<div class="menu-item"><a href="index.html">about</a></div>
+<div class="menu-item"><a href="../assets/Vivek_Gopalakrishnan_CV.pdf" target="blank">cv</a></div>
+<div class="menu-category">research</div>
+<div class="menu-item"><a href="papers.html">papers&nbsp;(full&nbsp;list&nbsp;coming&nbsp;soon!)</a></div>
+<div class="menu-item"><a href="talks.html">talks</a></div>
+<div class="menu-category">software</div>
+<div class="menu-item"><a href="https://vivekg.dev/DiffDRR" target="blank">DiffDRR</a></div>
+<div class="menu-category">blog</div>
+<div class="menu-item"><a href="dual-fourier-slice.html">dual&nbsp;of&nbsp;the&nbsp;fourier&nbsp;slice&nbsp;theorem</a></div>
+<div class="menu-item"><a href="conjugate-gradient.html">the&nbsp;conjugate&nbsp;gradient&nbsp;method</a></div>
+<div class="menu-item"><a href="unitary-matrices.html">a&nbsp;fun&nbsp;interpretation&nbsp;of&nbsp;unitary&nbsp;matrices</a></div>
+<div class="menu-item"><a href="graph-cuts.html">graph&nbsp;cuts,&nbsp;laplacians,&nbsp;and&nbsp;\(\lambda_2\)</a></div>
+<div class="menu-item"><a href="compressed-sensing.html">compressed&nbsp;sensing</a></div>
+<div class="menu-item"><a href="spectral-markov.html">spectral&nbsp;properties&nbsp;of&nbsp;markov&nbsp;chains</a></div>
+<div class="menu-item"><a href="pca-courant-fischer.html" class="current">pca&nbsp;via&nbsp;the&nbsp;courant-fischer&nbsp;theorem</a></div>
+<div class="menu-item"><a href="farewell-hopkins.html">farewell&nbsp;hopkins&nbsp;(for&nbsp;now&hellip;)</a></div>
+<div class="menu-category">teaching</div>
+<div class="menu-item"><a href="https://neurodatadesign.io/" target="blank">Neuro&nbsp;Data&nbsp;Design&nbsp;(JHU)</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Deriving PCA from the Courant&ndash;Fischer Theorem</h1>
+<div id="subtitle">2021-09-06 ☾ <b>A variational eigenvalue characterization of principle components</b>
+</div>
+</div>
+<p>Principal Component Analysis (PCA) is one of my favorite algorithms because (1) it is foundational and broadly applicable, and (2) it can be derived using approaches from many different mathematical fields.Typically, these derivations involve optimizing a high-dimensional objective function with Lagrange multipliers. Instead, the Courant&ndash;Fischer Theorem, a fundamental theorem from linear algebra, can be used to more simply arrive at a solution to this optimization problem.
+</p>
+<p>In this post, we prove the Courant&ndash;Fischer Theorem, use it to derive PCA, and finally consider some technical points from the derivation.
+</p>
+<h2>Formulating PCA as a matrix optimization problem</h2>
+<p>One view of PCA can be motivated by the following question:
+</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p>Given a set of high-dimensional data points, what are the <b>directions of maximal variance?</b>
+</p>
+</div></div>
+<p>Represent one such high-dimensional data point with a random vector \(x \in \mathbb{R}^D\) and assume the following:
+</p>
+<ul>
+<li><p>\(\mathbb{E}[x] = 0\) (i.e., the vector is <b>mean-centered</b>), and
+</p>
+</li>
+<li><p>\(\mathrm{rank}(\Sigma_x) \geq d\), where \(\Sigma_x\) is the covariance matrix of \(x\) and \(d \ll D\) is the dimensionality of our embedding.
+</p>
+</li>
+</ul>
+<p>These assumptions lead us to the following definition:
+</p>
+<p><b>Definition 1 (Principal Components of \(x\)).</b>
+The \(d\) principal components (PCs) of \(x\) are a set of mutually uncorrelated (that is, \(\mathrm{cov}(y_i, y_j) = 0\) for all \(i \neq j\)) random variables \(\vec{y} \in \mathbb{R}^d\) defined as
+</p>
+<p style="text-align:center">
+\[ y_i = \langle u_i, x \rangle \in \mathbb{R},\quad u_i \in \mathbb{R}^D \text{ and } \lVert u_i \rVert_2 = 1,\quad i=1,\dots,d \,,\]
+</p><p>such that the variance of \(y_i\) is maximized subject to
+</p>
+<p style="text-align:center">
+\[ \mathrm{Var}(y_1) \geq \cdots \geq \mathrm{Var}(y_d) &gt; 0 \,. \]
+</p><p>We can derive an important characterization of the PCs from this definition:
+</p>
+<p><b>Lemma 1.</b> \(\mathrm{Var}(y_i) = u_i^*\Sigma_x u_i \,.\)
+</p>
+<p><b>Proof:</b>
+This follows from the definition of variance:
+</p>
+<p style="text-align:center">
+\[
+\require{cancel}
+\begin{align*}
+    \mathrm{Var}(y_i)
+    &amp;= \mathbb{E}[y_i^2] - \cancel{\mathbb{E}[y_i]^2} &amp;&amp;\text{(Given \(\mathbb{E}[x] = 0\).)} \\
+    &amp;= \mathbb{E}[u_i^* x u_i^* x] &amp;&amp;\text{(By definition of \(y_i\).)} \\
+    &amp;= \mathbb{E}[u_i^* x x^* u_i] &amp;&amp;\text{(The dot product is commutative.)} \\
+    &amp;= u_i^* \mathbb{E}[x x^*] u_i &amp;&amp;\text{(Expectation is linear.)} \\
+    &amp;= u_i^*\Sigma_x u_i \,.
+\end{align*}
+\]
+</p><p>Therefore, we are looking for the vectors \(u_i\) that maximize this <a href="https://en.wikipedia.org/wiki/Quadratic_form" target=&ldquo;blank&rdquo;>quadratic form</a>!
+</p>
+<p>We need one final result before we can apply the Courant&ndash;Fischer Theorem:
+</p>
+<p><b>Lemma 2.</b> The covariance matrix of a random variable is Hermitian. Note, a matrix \(A\) is Hermitian if \(A = A^*\) (i.e., a more general form of symmetry that applies to complex matrices).
+</p>
+<p><b>Proof:</b>
+</p>
+<p style="text-align:center">
+\[ \Sigma_x^* = (\mathbb{E}[xx^*] - \mathbb{E}[x]\mathbb{E}[x^*])^* = \mathbb{E}[(xx^*)^*] - \mathbb{E}[x^*]\mathbb{E}[(x^*)^*] = \Sigma_x \,. \]
+</p><h2>Proving the Courant&ndash;Fischer Theorem</h2>
+<p>The Courant&ndash;Fischer Theorem provides a very useful bound on all possible quadratic forms of a Hermtian matrix in a subspace using the eigenvalues of the matrix.
+</p>
+<p><b>Theorem 1 (Courant&ndash;Fischer).</b>
+Let \(A \in M_n\) be a Hermitian matrix with eigenvalues \(\lambda_1 \geq \cdots \geq \lambda_n\) and corresponding eigenvectors \(u_1, \dots, u_n\).
+Then,
+</p>
+<p style="text-align:center">
+\[ 
+    \lambda_k =
+    \min_{\substack{\cal{V} \subseteq \mathbb{C}^n \\ \mathrm{dim}\cal{V} = n-k}}
+    \max_{\substack{x \in \cal{V}^\perp \\ x \neq \vec{0}}}
+    \frac{x^* A x}{x^* x} \,. 
+\]
+</p><p><b>Proof:</b>
+Because \(A\) is Hermitian, it is unitarily diagonalizable. Let \(\cal{U} = \mathrm{span}\{ u_1, \dots, u_k \}\). Then, the intersection of \(\cal U\) and \(\cal V^\perp\) has a dimension of at least \(1\):
+From the Inclusion-Exclusion Principle:
+</p>
+<p style="text-align:center">
+\[
+    \begin{align*}
+    \dim (\mathcal{U} \cap \mathcal{V^\perp}) &amp;= \dim \cal U + \dim \cal V^\perp - \dim(\cal U \cup \cal V^\perp) \\ &amp;= k + (n - k + 1) - \dim(\cal U \cup \cal V^\perp) \\ &amp;\geq k + (n - k + 1) - n \\ &amp;= 1 \,. 
+    \end{align*}
+\]
+</p><p>Let \(w \in \cal U \cap \cal V^\perp\) and express \( w = \sum_{i=1}^k c_i u_i \) (a linear combination of the first \(k\) eigenvectors). Then,
+</p>
+<p style="text-align:center">
+\[
+\begin{align*}
+    \frac{w^* A w}{w^* w}
+    = \frac{\sum_{i=1}^k \lambda_i c_i^2}{\sum_{i=1}^k c_i^2}
+    \geq \lambda_k \frac{\sum_{i=1}^k c_i^2}{\sum_{i=1}^k c_i^2}
+    = \lambda_k \,,
+\end{align*}
+\]
+</p><p>with equality if \(w = u_k \Rightarrow \cal V^\perp = \mathrm{span}\{u_1, \dots, u_{k-1}\} \,.\)
+</p>
+<p><b>Corollary 1.</b> As a direct consequence of the Courant&ndash;Fischer Theorem, for any matrix \(A\) as in Theorem 1,
+</p>
+<p style="text-align:center">
+\[ 
+    \lambda_k = \max_{x \perp \{u_1, \dots, u_{k-1}\}} \frac{x^* A x}{x^* x} \,. 
+\]
+</p><p>This vastly simplifies the constrained optimization problem presented in Lemma 1 &ndash; no need for Lagrange multipliers!
+</p>
+<h2>Deriving PCA</h2>
+<p><b>Theorem 2 (Principal Component Analysis).</b>
+Given a random variable \(x\) with covariance matrix \(\Sigma_x \in M_n\) with eigenvalues \(\lambda_1 \geq \cdots \geq \lambda_n\) and associated normalized eigenvectors \(u_1, \dots, u_n\), the \(i\)-th principal component of \(x\) is
+</p>
+<p style="text-align:center">
+\[ y_i = \langle u_i, x \rangle \,. \]
+</p><p><b>Proof:</b> From Lemma 1, we have that \( \mathrm{Var}(y_i) = u_i^* \Sigma_x u_i \text{ with } \lVert u_i \rVert_2 = 1 \). From the Courant&ndash;Fischer Theorem, we have that
+</p>
+<p style="text-align:center">
+\[ \max_{u \in \mathbb{C}^n} \mathrm{Var}(y_1) = \max_{u \in \mathbb{C}^n} \frac{u^* \Sigma_x u}{u^* u} = \lambda_1 \,. \]
+</p><p>That is, the first principal component of \(x\) is in the direction of the eigenvector corresponding to the largest eigenvalue.
+Recall that, by definition, the principal components are mutually uncorrelated.
+This implies that, unless \(\Sigma_x\) is the zero matrix, \(\lambda_1 &gt; 0 \Rightarrow u_1 \perp u_2\). By the definition of uncorrelatedness, 
+</p>
+<p style="text-align:center">
+\[ 
+    \begin{align*} 
+    0 &amp;= \mathrm{Cov}(y_1, y_2) \\ &amp;= \mathbb{E}[u_1^* x u_2^* x] \\ &amp;= \mathbb{E}[u_1^* x x^* u_2] \\ &amp;= u_1^* \mathbb{E}[x x^*] u_2 \\ &amp;= u_1^*\Sigma_x u_2 \\ &amp;= (\Sigma_x u_1)^* u_2 \\ &amp;= \lambda_1 u_1^*u_2 \,. 
+    \end{align*} 
+\]
+</p><p>Therefore,
+</p>
+<p style="text-align:center">
+\[ \max_{u \perp \{u_1\}} \mathrm{Var}(y_2) = \max_{u \perp \{u_1\}} \frac{u^* \Sigma_x u}{u^* u} = \lambda_2 \,. \]
+</p><p>By induction, we can show that the uncorrelatedness of the principal components implies the orthogonality of their underlying vectors, continuing to enable use of the Courant&ndash;Fischer Theorem. Thus, PCA has been derived!
+</p>
+<h2>Technical Considerations</h2>
+<div class="infoblock">
+<div class="blockcontent">
+<p>What if \(\lambda_i\) is complex? Which eigenvalue is &ldquo;largest&rdquo; in this case?
+</p>
+</div></div>
+<p>It is true that there is no total ordering on the complex numbers (see <a href="https://math.stackexchange.com/questions/487997/total-ordering-on-complex-numbers" target=&ldquo;blank&rdquo;>here</a>), so there would be no &ldquo;largest&rdquo; eigenvalue, as such&hellip; However, we have shown that \(\Sigma_x\) is Hermitian, so \(\sigma(\Sigma_x) \subseteq \mathbb{R}\,.\) This is because Hermitian matrices are unitary diagonalizable, and the diagonal matrix, which is comprised of the eigenvalues, is itself Hermitian.
+</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p>Okay, but what if \(\lambda_i &lt; 0\)? That wouldn't be a valid variance.
+</p>
+</div></div>
+<p>Any covariance matrix \(\Sigma_x\) is positive semi-definite, so we also know that the eigenvalues of \(\Sigma_x\) are non-negative, i.e., \(\sigma(\Sigma_x) \subseteq \mathbb{R}_{\geq 0}\,.\)
+</p>
+<p>For any vector \(z \neq \vec{0}\), 
+</p>
+<p style="text-align:center">
+\[
+    \begin{align*}
+        z^* \Sigma_x z &amp;= \mathbb{E}[z^* xx^* z] - \mathbb{E}[z^* x]\mathbb{E}[x^* z] \\ &amp;= \mathbb{E}[(z^* x)^2] - \mathbb{E}[z^* x]^2 \\ &amp;= \mathrm{V}(z^* x) \\ &amp;\geq 0 \,. 
+    \end{align*}
+\]
+</p><div class="infoblock">
+<div class="blockcontent">
+<p>What happens if \(\lambda_i = \lambda_j\) for \(i \neq j\)?
+</p>
+</div></div>
+<p>Recall that \(\Sigma_x\) is Hermitian, and therefore is unitarily diagonalizable. This implies that every eigenvalue of \(\Sigma_x\) has equal geometric and algebraic multiplicities (this follows from the Jordan Canonical Form!). Therefore, for repeated eigenvalues, we can pick any orthonormal eigenvectors from the eigenspace of \(\lambda = \lambda_i = \lambda_j\), meaning the PCs are defined only up to a rotation.
+</p>
+<h2>Acknowledgements</h2>
+<p>This post synthesizes ideas I encountered in Matrix Analysis (<a href="https://www.amazon.com/Matrix-Analysis-Second-Roger-Horn/dp/0521548233" target=&ldquo;blank&rdquo;>JHU.AMS.792</a>) and Unsupervised Learning (<a href="http://www.vision.jhu.edu/teaching/learning/learning17/" target=&ldquo;blank&rdquo;>JHU.BME.692</a>). The second chapter of <a href="https://link.springer.com/content/pdf/10.1007/978-0-387-87811-9.pdf" target=&ldquo;blank&rdquo;>Vidal et al. (2015)</a> presents PCA from three different perspectives: statistical, geometric, and rank-minimization.
+</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2023-02-27 18:15:17 UTC, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

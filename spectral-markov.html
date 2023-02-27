@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Some Spectral Properties of Markov Chains</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">vivek's site</div>
+<div class="menu-item"><a href="index.html">about</a></div>
+<div class="menu-item"><a href="../assets/Vivek_Gopalakrishnan_CV.pdf" target="blank">cv</a></div>
+<div class="menu-category">research</div>
+<div class="menu-item"><a href="papers.html">papers&nbsp;(full&nbsp;list&nbsp;coming&nbsp;soon!)</a></div>
+<div class="menu-item"><a href="talks.html">talks</a></div>
+<div class="menu-category">software</div>
+<div class="menu-item"><a href="https://vivekg.dev/DiffDRR" target="blank">DiffDRR</a></div>
+<div class="menu-category">blog</div>
+<div class="menu-item"><a href="dual-fourier-slice.html">dual&nbsp;of&nbsp;the&nbsp;fourier&nbsp;slice&nbsp;theorem</a></div>
+<div class="menu-item"><a href="conjugate-gradient.html">the&nbsp;conjugate&nbsp;gradient&nbsp;method</a></div>
+<div class="menu-item"><a href="unitary-matrices.html">a&nbsp;fun&nbsp;interpretation&nbsp;of&nbsp;unitary&nbsp;matrices</a></div>
+<div class="menu-item"><a href="graph-cuts.html">graph&nbsp;cuts,&nbsp;laplacians,&nbsp;and&nbsp;\(\lambda_2\)</a></div>
+<div class="menu-item"><a href="compressed-sensing.html">compressed&nbsp;sensing</a></div>
+<div class="menu-item"><a href="spectral-markov.html" class="current">spectral&nbsp;properties&nbsp;of&nbsp;markov&nbsp;chains</a></div>
+<div class="menu-item"><a href="pca-courant-fischer.html">pca&nbsp;via&nbsp;the&nbsp;courant-fischer&nbsp;theorem</a></div>
+<div class="menu-item"><a href="farewell-hopkins.html">farewell&nbsp;hopkins&nbsp;(for&nbsp;now&hellip;)</a></div>
+<div class="menu-category">teaching</div>
+<div class="menu-item"><a href="https://neurodatadesign.io/" target="blank">Neuro&nbsp;Data&nbsp;Design&nbsp;(JHU)</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Some Spectral Properties of Markov Chains</h1>
+<div id="subtitle">2021-11-10 ☾ <b>The power of Gershgorin and his Circles</b>
+</div>
+</div>
+<p>Markov chains are stoachastic models for describing discrete sequences of random behavior.
+While I normally dislike probability theory because I find it incredibly confusing, I like Markov chains because they can be expressed using linear algebra (which I find much less confusing!).
+This post explores the spectral properties of Markov chains
+and relates this to the limiting probabilistic behaviors of Markov chains.
+The <b>spectrum</b> of a matrix is the set of its eigenvalues. Spectral properties are then the properties of the eigenvalues that give rise to special behavior.
+</p>
+<p>Three main results will be proved in this post (still need to prove
+</p>
+<ol>
+<li><p>The eigenvalues of a Markov chain are bounded within the unit circle
+</p>
+</li>
+<li><p>The number of stationary distributions a Markov chain has is related to the geometric multiplicity of \(\lambda=1\)
+</p>
+</li>
+<li><p>A large class of Markov chains have a unique stationary distribution
+</p>
+</li>
+<li><p>If a Markov chain is not diagonalizable, its stationary distributions are calculable using the Jordan Canonical Form
+</p>
+</li>
+</ol>
+<p>Said more precisely, Result 2 really characterizes the <b>dimension of the space of stationary distributions</b>.
+</p>
+<h2>Gershgorin and His Circles</h2>
+<p>A Markov chain describes the probability of transitioning from one state to another.
+These transition probabilities can be summarized using a Markov matrix:
+</p>
+<p><b>Definition 1 (Markov matrix).</b>
+A matrix \(M \in M_n([0, 1])\) is a Markov matrix if the entries of each column sum to 1. Said another way, if \(i\) and \(j\) are states in a Markov chain, then \(\mathbb P( j \mapsto i ) = M_{ij}\)
+</p>
+<p>The eigenvalues of a Markov matrix have a remarkable property: they're never bigger than 1 in magnitude!
+To prove this, we need an underrated result from linear algebra:
+</p>
+<p><b>Theorem 1 (Gershgorin disc theorem).</b>
+For the \(i\)-th row of a matrix \(A\),
+let the row sum \(R_i = \sum_{j \neq i} A_{ij}\) be the radius of the disc centered at \(A_{ii}\): \(G_i(A) = \{ z \in \mathbb C : | z - A_{ii} | \leq R_i \}\).
+Let the union of these discs be \(G(A) = \cup_{i=1}^n G_i(A) \,.\)
+Then, \(\sigma(A) \subseteq G(A) \,.\)
+Note that \(\sigma(A) = \{\lambda \in \mathbb C : Ax = \lambda x\}\) represents the set of all eigenvalues of \(A\).
+</p>
+<p><b>Proof:</b> A good explanation is avilable on [Wikipedia https:<i></i>en.wikipedia.org<i>wiki</i>Gershgorin<u>circle</u>theorem
+</p>
+<p>We can augment the Gershgorin disc theorem with a quick lemma connecting the eigenvalues of \(A\) and \(A^*\):
+</p>
+<p><b>Lemma 1.</b>
+Given a matrix \(A \in M_n\), \(\sigma(A) = \sigma(A^*)\).
+</p>
+<p><b>Proof:</b>
+The lemma holds since \(A\) and \(A^*\) have the same characteristic polynomial:
+\(\det(A^*- \lambda I) = \det((A - \lambda I)^*) = \det(A - \lambda I) \,.\)
+</p>
+<p>Thanks to Lemma 1, we can equivalently define \(R_i\) in the Gershgorin disc theorem to be the <b>column sum</b>, \(\sum_{i \neq j} A_{ij}\), instead of the row sum.
+Now, the first main result follows:
+</p>
+<p><b>Corollary 1 (Spectrum of Markov matrices).</b>
+The eigenvalues of a Markov matrix \(M \in M_n([0, 1]) \,,\) are bounded within the unit circle. Said mathematically, \(\sigma(M) \subseteq \{ z \in \mathbb C : |z| \leq 1 \} \,.\)
+</p>
+<p><b>Proof:</b>
+Since the columns of \(M\) must sum to \(1\), this means that for every column \(i\), \(M_{ii} + R_i = 1\).
+Therefore, the disc \(G_i(M)\) is a subset of the unit circle that also intersects the unit circle at \((1, 0)\).
+Therefore, by Theorem 1, \(\sigma(M) \subseteq G(M) \subseteq \{ z \in \mathbb C : |z| \leq 1 \}\).
+</p>
+<p>Here is an illustration of this proof for a Markov matrix in \(M_4([0,1])\).
+Interestingly, this picture also shows us that the only way we can have an complex eigenvalue with magnitude 1 is if one of the \(M_{ii} = 0\)&hellip;
+more on this later.
+</p>
+<p><a href="https://github.com/eigenvivek/gershgorin" target=&ldquo;blank&rdquo;>This package</a> can be used to visualize Gershgorin discs of a matrix.
+</p>
+<table class="imgtable"><tr><td>
+<img src="../../assets/images/markov_gershgorin.png" alt="Markov Gershgorin" width="300px" height="300px" />&nbsp;</td>
+<td align="left"></td></tr></table>
+<p>Next, we ask what is the largest eigenvalue of a Markov matrix?
+</p>
+<p><b>Corollary 2 (Spectral radius of Markov matrices).</b>
+The spectral radius of a Markov matrix is \(\rho(M) = 1\) and \(\rho(M) \in \sigma(M)\).
+</p>
+<p><b>Proof:</b>
+Let \(\vec{1} \in \mathbb R^n\) be a column vector of all 1s.
+We can then write the column sum constraint as \(M^*\vec{1} = \vec{1}\).
+Note that this equation shows that \(\lambda = 1\) is an eigenvalue of \(M^*\) (and by Lemma 1, also an eigenvalue of \(M\)).
+Because the eigenvalues of \(M\) are constrained within the unit circle by Corollary 1,
+\(\lambda = 1\) achieves the maximum possible modulus.
+Therefore, \(\rho(M) = 1\) and \(\rho(M) \in \sigma(M)\).
+</p>
+<h2>Enumerating the Stationary Distributions</h2>
+<p><b>Remark:</b>
+Gershgorin gives us a very powerful sets of results!
+They show that if our Markov matrix is diagonalizable (i.e., \(M = SDS^{-1}\) for \(S \in M_n\) invertible and \(D \in M_n\) diagonal),
+then \(M^k = SD^kS^{-1}\) will converge to some matrix as \(k \to \infty\),
+and the steady state for any initial condition will be determined by the eigenvectors of \(M\) whose eigenvalues equal the spectral radius.
+What happens if \(M\) is not diagonalizable? In this case, we have to use the Jordan Canonical Form (JCF) of \(M\) (more on this later).
+</p>
+<p>For a cool application of this convergence idea, let's consider a symmetric Markov chain (i.e., forwards and backwards probability are equal).
+The spectral theorem tells us that the eigenvectors of this matrix are orthogonal.
+Additionally, assume that the geometric multiplicity of the eigenvector \(1\) is \(k\) for this example.
+Then,
+</p>
+<p style="text-align:center">
+\[
+\begin{align*}
+    \lim_{k \rightarrow \infty} M^k
+    &amp;= \lim_{k \rightarrow \infty} SD^kS^{-1} \\
+    &amp;= S (I_k \oplus \mathbf 0_{n-k}) S^{-1} \\
+    &amp;= \begin{pmatrix} s_1 \cdots s_k &amp; \vec 0 \cdots \vec 0 \end{pmatrix}
+    \begin{pmatrix} s_1 &amp; \cdots &amp; s_n \end{pmatrix}^* \\
+    &amp;= \sum_{i=1}^k s_i s_i^* \,.
+\end{align*}
+\]
+</p><p>Since the eigenvectors of \(M\) are orthonormal, note that \(s_i s_i^*\) is a matrix representing the orthogonal projection onto \(s_i\).
+Thus, \(P_{S_k} = \sum_{i=1}^k s_i s_i^*\) is a projection matrix onto the span of \(\{s_1, \dots, s_k\}\).
+Finally, we can see that for some initial condition \(x_0\),
+</p>
+<p style="text-align:center">
+\[ \lim_{k \rightarrow \infty} M^k x_0 = P_{S_k} x_0 \,, \]
+</p><p>meaning the stationary distributions of \(M\) are an orthogonal projection onto the eigenspace of \(\lambda = 1\).
+Said another way, any convex combination of the eigenvectors of \(M\) with eigenvalue \(1\) is a valid stationary distribution.
+</p>
+<p>So, in general, when does \(M\) have a unique stationary distribution (i.e., when is the geometric multiplicity of \(1\) equal to \(1\))?
+</p>
+<h2>The Perron&ndash;Frobenius Theorem</h2>
+<p><b>Definition 3 (Positive and non-negative matrices).</b>
+A matrix \(A \in M_n(\mathbb R)\) is positive (written \(A &gt; 0\)) if all entries of \(A\) are positive.
+Similarly, if all the entries of \(A\) are non-negative, then \(A\) is non-negative as well (i.e., \(A \geq 0\)).
+</p>
+<p>The Perron&ndash;Frobenius Theorem gives many results about positive matrices.
+To study Markov matrices, we focus on one of them:
+</p>
+<p><b>Theorem 2 (Perron&ndash;Frobenius).</b>
+If \(A \in M_n(\mathbb R)\) is positive, then \(\rho(A)\) is an eigenvalue of \(A\) with algebraic multiplicity 1.
+</p>
+<p><b>Corollary 3.</b>
+Theorem 2 still applies if \(A\) is non-negative and irreducible. <b></b>Irreducibility<b></b> is related to the concept of the <b>connectedness</b> of a matrix. Specifically, matrices can be represented as <b>entry digraphs</b> (take the matrix, binarize it, and treat that as the adjacency matrix of a directed graph). If the graph is strongly connected (i.e., each vertex is connected to every other vertex by a directed edge), then it is irreducible.
+</p>
+<p>By definition, Markov matrices are non-negative.
+If a Markov matrix is irreducible, then the Perron&ndash;Frobenius theorem says that \(\rho(M)=1\) is a simple eigenvalue of \(M\).
+Since the geometric multiplicity of an eigenvalue is bounded above by its algebraic multiplicity, that means that there is only a single eigenvector \(x\) such that \(Ax = x\).
+This vector \(x\), scaled so that its entries sum to 1, is the unique steady state distribution of \(M\).
+</p>
+<p>The defintion of irreducibility also helps us understand the result proved in the previous section.
+If a matrix is reducible, there are multiple strongly connected components.
+These are communities in the graph that, once you walk into, you cannot walk out of.
+Such a community would have an eigenvector with non-zero entry for each vertex in the strongly connected component and \(0\)'s for every other vertex, and this eigenvector would be a stationary distribution.
+Each strongly connected component would have its own such eigenvector, and their convex hull would be the space of all possible stationary distributions.
+This is exactly what we proved in the previous section, but thanks to this spectral graph theory perspective, we now we don't need \(M\) to be symmetric to prove it!
+</p>
+<h2>Diagonalization with the Jordan Canonical Form</h2>
+<p>The past results have assumed that \(M\) is diagonalizable. What if this is not true?
+</p>
+<p>I'm not sure how the math works out really, but I'll endeavor to prove it some day :)
+</p>
+<h2>Future Questions to Answer</h2>
+<p>These will slowly be addressed in future versions of this post.
+</p>
+<ul>
+<li><p>How do we characterize stationary oscillations with spectral methods?
+</p>
+</li>
+<li><p>How does this connect to deterministic discrete linear dynamic systems?
+</p>
+</li>
+</ul>
+<div id="footer">
+<div id="footer-text">
+Page generated 2023-02-27 18:15:17 UTC, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

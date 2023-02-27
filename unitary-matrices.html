@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>A Fun Interpretation of Unitary Matrices</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">vivek's site</div>
+<div class="menu-item"><a href="index.html">about</a></div>
+<div class="menu-item"><a href="../assets/Vivek_Gopalakrishnan_CV.pdf" target="blank">cv</a></div>
+<div class="menu-category">research</div>
+<div class="menu-item"><a href="papers.html">papers&nbsp;(full&nbsp;list&nbsp;coming&nbsp;soon!)</a></div>
+<div class="menu-item"><a href="talks.html">talks</a></div>
+<div class="menu-category">software</div>
+<div class="menu-item"><a href="https://vivekg.dev/DiffDRR" target="blank">DiffDRR</a></div>
+<div class="menu-category">blog</div>
+<div class="menu-item"><a href="dual-fourier-slice.html">dual&nbsp;of&nbsp;the&nbsp;fourier&nbsp;slice&nbsp;theorem</a></div>
+<div class="menu-item"><a href="conjugate-gradient.html">the&nbsp;conjugate&nbsp;gradient&nbsp;method</a></div>
+<div class="menu-item"><a href="unitary-matrices.html" class="current">a&nbsp;fun&nbsp;interpretation&nbsp;of&nbsp;unitary&nbsp;matrices</a></div>
+<div class="menu-item"><a href="graph-cuts.html">graph&nbsp;cuts,&nbsp;laplacians,&nbsp;and&nbsp;\(\lambda_2\)</a></div>
+<div class="menu-item"><a href="compressed-sensing.html">compressed&nbsp;sensing</a></div>
+<div class="menu-item"><a href="spectral-markov.html">spectral&nbsp;properties&nbsp;of&nbsp;markov&nbsp;chains</a></div>
+<div class="menu-item"><a href="pca-courant-fischer.html">pca&nbsp;via&nbsp;the&nbsp;courant-fischer&nbsp;theorem</a></div>
+<div class="menu-item"><a href="farewell-hopkins.html">farewell&nbsp;hopkins&nbsp;(for&nbsp;now&hellip;)</a></div>
+<div class="menu-category">teaching</div>
+<div class="menu-item"><a href="https://neurodatadesign.io/" target="blank">Neuro&nbsp;Data&nbsp;Design&nbsp;(JHU)</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>A Fun Interpretation of Unitary Matrices</h1>
+<div id="subtitle">2022-05-28 ☾ <b>Why are the rows orthonormal?</b>
+</div>
+</div>
+<p>This is a proof that if the columns of the matrix are orthonormal, then the rows are also orthonormal.
+</p>
+<p>Let \(U \in M_n(\mathbb{C})\) be a square matrix such that its columns form an orthonormal basis over \(\mathbb{C}^n\).
+That is, for each pair of columns \(x_i\) and \(x_j\), the inner product \(x_i^* x_j = \delta_{ij}\). (This is the Kronecker delta. It equals \(1\) if \(x_i = x_j\) and \(0\) otherwise.)
+If we think about matrix multiplication as a series of inner products between the rows of the first matrix and the columns of the second matrix, then this gives us the following identities:
+</p>
+<p style="text-align:center">
+\[ (U^*U)_{ij} = x_i^* x_j = \delta_{ij} \Longrightarrow U^*U = I \Longrightarrow UU^* = I \,, \]
+</p><p>where the last identity follows from the fact that if \(AB=I\), then \(BA=I\). (See the proof <a href="https://math.stackexchange.com/questions/3852/if-ab-i-then-ba-i" target=&ldquo;blank&rdquo;>here</a>. Note that the class of square matrices \(U\) adhering to the identity \( U^*U = UU^* = I \) are the <a href="https://www.wikiwand.com/en/Unitary_matrix" target=&ldquo;blank&rdquo;>unitary matrices</a>.)
+But this is interesting&hellip; the last identity implies that the <b>rows</b> of \(U\) are also orthonormal!
+<b></b>If the columns of the matrix are orthonormal, then why are the rows also orthonormal?<b></b>
+</p>
+<p>To answer this, it helps think about matrix multiplication as a series of <b>outer</b> products: \( U^*U = \sum_{i=1}^n x_i x_i^* \,. \)
+For a pair of orthonormal vectors \(x_i\) and \(x_j\), the rank-one matrix \( P_{x_i} = x_i x_i^* \) represents the orthogonal projection onto the vector \(x_i\).
+Therefore,
+</p>
+<p style="text-align:center">
+\[ UU^* = \sum_{i=1}^n x_i x_i^* = P_{x_1} + \cdots + P_{x_n} = I \,. \]
+</p><p>Here's why the last equality holds: since the vectors \(\{x_1, \dots, x_n\}\) form a basis over \(\mathbb{C}^n\), the sum of \(n\) rank-one projection matrices forms a projection into \(\mathbb C^n \,.\) Therefore, multiplying a vector \(y \in \mathbb C^n\) by the matrix \(UU^*= (P_{x_1} + \cdots + P_{x_n})\) results in no loss of dimensionality since we are projecting onto the full vector space \(\mathbb C^n\).
+That is,
+</p>
+<p style="text-align:center">
+\[
+\begin{align}
+    UU^* y
+    &amp;= (P_{x_1} + \cdots + P_{x_n}) y \\
+    &amp;= P_{x_1} y + \cdots + P_{x_n} y \\
+    &amp;= c_1 x_1 + \cdots + c_n x_n \\
+    &amp;= y \,, &amp;&amp;\text{(It's just a change of basis!)}
+\end{align}
+\]
+</p><p>implying that \(UU^* = I \,.\)
+</p>
+<p>This proof shows that orthonormal columns imply orthonormal rows, giving another intuition for the geometric behavior of unitary matrices.
+</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2023-02-27 18:15:17 UTC, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>

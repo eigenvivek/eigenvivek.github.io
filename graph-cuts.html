@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Graph Cuts, Graph Laplacians, and \(\lambda_2\)</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">vivek's site</div>
+<div class="menu-item"><a href="index.html">about</a></div>
+<div class="menu-item"><a href="../assets/Vivek_Gopalakrishnan_CV.pdf" target="blank">cv</a></div>
+<div class="menu-category">research</div>
+<div class="menu-item"><a href="papers.html">papers&nbsp;(full&nbsp;list&nbsp;coming&nbsp;soon!)</a></div>
+<div class="menu-item"><a href="talks.html">talks</a></div>
+<div class="menu-category">software</div>
+<div class="menu-item"><a href="https://vivekg.dev/DiffDRR" target="blank">DiffDRR</a></div>
+<div class="menu-category">blog</div>
+<div class="menu-item"><a href="dual-fourier-slice.html">dual&nbsp;of&nbsp;the&nbsp;fourier&nbsp;slice&nbsp;theorem</a></div>
+<div class="menu-item"><a href="conjugate-gradient.html">the&nbsp;conjugate&nbsp;gradient&nbsp;method</a></div>
+<div class="menu-item"><a href="unitary-matrices.html">a&nbsp;fun&nbsp;interpretation&nbsp;of&nbsp;unitary&nbsp;matrices</a></div>
+<div class="menu-item"><a href="graph-cuts.html" class="current">graph&nbsp;cuts,&nbsp;laplacians,&nbsp;and&nbsp;\(\lambda_2\)</a></div>
+<div class="menu-item"><a href="compressed-sensing.html">compressed&nbsp;sensing</a></div>
+<div class="menu-item"><a href="spectral-markov.html">spectral&nbsp;properties&nbsp;of&nbsp;markov&nbsp;chains</a></div>
+<div class="menu-item"><a href="pca-courant-fischer.html">pca&nbsp;via&nbsp;the&nbsp;courant-fischer&nbsp;theorem</a></div>
+<div class="menu-item"><a href="farewell-hopkins.html">farewell&nbsp;hopkins&nbsp;(for&nbsp;now&hellip;)</a></div>
+<div class="menu-category">teaching</div>
+<div class="menu-item"><a href="https://neurodatadesign.io/" target="blank">Neuro&nbsp;Data&nbsp;Design&nbsp;(JHU)</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Graph Cuts, Graph Laplacians, and \(\lambda_2\)</h1>
+<div id="subtitle">2022-01-31 ☾ <b>Another interesting eigenvalue application!</b>
+</div>
+</div>
+<h2>Defining the Graph Cut Problem</h2>
+<p>Let \(G = (V, E)\) be a graph with \(|V| = n\).
+The goal of the graph cut problem is to find a subset of the vertex set \(S \subset V\) that minimizes the <b>cut ratio</b>:
+</p>
+<p style="text-align:center">
+\[ \phi(S) = \frac{e(S)}{\min\{|S|, |S^c|\}} \,, \]
+</p><p>where \(e(S) = e(S^c)\) is the number of edges connecting \(S\) and \(S^c\).
+The cut ratio can be thought of as quantifying the amount of information that is lost when a cut is performed. Note, there are many different cost functions one can use to define the graph cut problem. For example, if \(|S|\) is replaced with \(d(S)\) (the degree of the nodes in \(S\)), the new quantity is called the <b>conductance</b> of a cut.
+</p>
+<p>We can encode which subset each vertex belongs to with a binary vector \(x \in \{-1, +1\}^n\).
+Then, \(e(S) = \frac{1}{4} \sum_{(i,j) \in E} (x_i - x_j)^2\).
+With this binary representation, this essentially becomes an integer programming problem!
+However, this problem is NP-hard (see <a href="https://en.wikipedia.org/wiki/Maximum_cut" target=&ldquo;blank&rdquo;>here</a> for more details), so solving it requires a few relaxations&hellip;
+Before doing so, it is useful to first define the graph Laplacian and prove a few properties.
+</p>
+<h2>Spectral Properties of the Graph Laplacian</h2>
+<p>In this context, <b>spectral</b> refers to the spectrum of eigenvalues.
+To get eigenvalues, we need a matrix.
+We can represent a grpah as a matrix using either the adjecency matrix \(A \in M_n(\{0, 1\})\) and the degree matrix \(D \in M_n(\{0, 1, \dots, n-1\})\).
+</p>
+<p><b>Definition 1 (The Graph Laplacian).</b>
+The graph Laplacian is a matrix representation of graph \(G\). It is written as \(L_G = D - A\) where \(D\) is the degree matrix and \(A\) is the adjacency matrix of the graph.
+Since we assume \(G\) is undirected, \(A\) is a symmetric matrix, and therefore, so is \(L_G\).
+</p>
+<p><b>Theorem 1.</b> A graph Laplacian has eigenvector \(\vec 1\) with eigenvalue 0.
+</p>
+<p><b>Proof:</b> \(L_G \vec 1 = (D - A) \vec 1 = D \vec 1 - A \vec 1 = \vec 0\).
+</p>
+<p><b>Corollary 1.</b> For a complete graph \(K\), any vector perpendicular to \(\vec 1\) is also an eigenvector of the graph Laplacian.
+</p>
+<p><b>Proof:</b>
+Since \(G\) is complete, the graph Laplacian can be written as \(L_K = (n-1)I - (\mathbf 1 - I) = nI - \mathbf 1\)
+If \(\require{cancel} v \perp \vec 1\), then \(L_k v = nIv - \cancel{\mathbf 1 v} = nv\).
+This also proves that the eigenvalue \(1\) has algebraic multiplicity \(n-1\).
+</p>
+<h2>Relaxing the Graph Cut Problem</h2>
+<p>First, note that
+</p>
+<p style="text-align:center">
+\[
+\begin{align}
+    |S| |S^c|
+    &amp;= \left(\sum_{i \in V} \mathbb{1}(x_i = +1)\right) \left(\sum_{j \in V} \mathbb{1}(x_j = -1)\right) \\
+    &amp;= \sum_{i, j \in V} \mathbb{1}(x_i = +1)\mathbb{1}(x_j = -1) \\
+    &amp;= \frac{1}{2} \sum_{i, j \in V} \mathbb{1}(x_i \neq x_j) \\
+    &amp;= \frac{1}{4} \sum_{i &lt; j} (x_i - x_j)^2 \,,
+\end{align}
+\]
+</p><p>allowing us to rewrite the cut ratio as
+</p>
+<p style="text-align:center">
+\[ \phi&rsquo;(S) = \frac{e(S)}{|S||S^c|} = \frac{\sum_{(i,j) \in E} (x_i - x_j)^2}{\sum_{i &lt; j} (x_i - x_j)^2} \,, \]
+</p><p>where \(\sum_{i &lt; j} = \sum_{j=1}^n \sum_{i=1}^{j-1} \,.\)
+</p>
+<p>One very interesting and surprising fact is that the sum of squared pairwise differences in the numerator and denominator of \(\phi'\) can be written in terms of matrix products using the <b>graph Laplacian</b> (Definition 1).
+Specifically, we can write
+</p>
+<p style="text-align:center">
+\[ 
+\sum_{(i,j) \in E} (x_i - x_j)^2 = x^T L_G x
+\quad\text{and}\quad
+\sum_{i &lt; j} (x_i - x_j)^2 = x^T L_K x \,,
+\]
+</p><p>where \(L_G\) is the graph Laplacian of \(G\) and \(L_K\) is the graph Laplacian of the complete graph on \(V\). To prove this, we can use the fact that every Laplacian can be written as a sum of edge Laplacians, \(L_G = \sum_{(i, j) \in E} L_{ij} = \sum_{(i, j) \in E} (e_i - e_j)(e_i - e_j)^T\). Then \(x^T L_G x = \sum_{(i, j) \in E} x^T(e_i - e_j)(e_i - e_j)^Tx = \sum_{(i, j) \in E} (x_i - x_j)^2 \,.\) Note that this also proves that the Laplacian is positive semi-definite.
+</p>
+<p>This, along with the fact
+\(\min\{|S|, |S^c|\} \geq |S| |S^c| \geq \frac{1}{2} \min\{|S|, |S^c|\} \,, \)
+allows us to bound this re-expressed cut ratio:
+</p>
+<p style="text-align:center">
+\[ \phi(S) \leq \phi&rsquo;(S) \leq 2 \phi(S) \,. \]
+</p><p>While removing the \(\min\) in the denominator makes \(\phi'\) a convex objective, the minimization problem is still NP-hard because of the support of \(x\).
+We can further relax the problem by letting \(x \in \mathbb{R}^n\) since we can threshold the values of \(x\) to make it binary.
+Then, note that WLOG, we can also assume that \(\sum_{i = 1}^n x_i = 0\) since we could arbitrarily shift \(x\) however we wanted. This innocuous constraint also buys us \(x \perp \vec 1\). To see this, think about the sum in terms of a dot product.
+Therefore, our final optimization problem is
+</p>
+<p style="text-align:center">
+\[ \min_{x \in \mathbb R^n, x \perp \vec 1} \frac{x^T L_G x}{x^T L_K x} \,. \]
+</p><p>To solve this elegantly, we will appeal to classical properties of the graph Laplacian.
+</p>
+<h2>Solving the Graph Cut Relaxation</h2>
+<p>Since we can assume that \(x \perp \vec 1\), Corollary 1 allows us to rewrite our optimization problem as
+</p>
+<p style="text-align:center">
+\[
+    \min_{x \in \mathbb R^n, x \perp \vec 1} \frac{x^T L_G x}{x^T L_K x}
+    =
+    \frac{1}{n} \min_{x \in \mathbb R^n, x \perp \vec 1} \frac{x^T L_G x}{x^Tx} \,. 
+\]
+</p><p>This bounded quadratic form is present in many optimization problems,
+and since the graph Laplacian is symmetric, we can solve it using the Courant&ndash;Fischer theorem.
+Specifically, appealing to <a href="https://vivekg.dev/pca-courant-fischer/" target=&ldquo;blank&rdquo;>Corollary 1 in the PCA derivation</a>,
+we can solve \(\min_{x \in \mathbb R^n,\ x \perp \vec 1} \frac{x^T L_G x}{x^Tx} = \lambda_2\), where \(\lambda_1=0 \leq \lambda_2 \leq \cdots \lambda_n\) are the eigenvalues of \(L_G\).
+Note that we know the eigenvalues of \(L_G\) are non-negative because we proved that \(L_G\) is positive semi-definite in deriving the approximate objective function.
+</p>
+<p>Therefore, the final solution to the graph cut relaxation is
+</p>
+<p style="text-align:center">
+\[ \min_{S \subset V} \phi&rsquo;(S) = \frac{\lambda_2}{n} \,. \]
+</p><p>For background on the Courant&ndash;Fischer theorem, see <a href="https://vivekg.dev/pca-courant-fischer/" target=&ldquo;blank&rdquo;>this derivation of PCA</a>. In this proof, we use the variant of Courant&ndash;Fischer where the eigenvalues are sorted in ascending order. The statement is mostly the same, except the min-max becomes a max-min.
+</p>
+<div id="footer">
+<div id="footer-text">
+Page generated 2023-02-27 18:15:17 UTC, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
