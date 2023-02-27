@@ -22,6 +22,7 @@ jobs:
         mv src/*.html __site/
         ./jemdoc -c site.conf src/blog/*.jemdoc
         mv src/blog/*.html __site/
+        cp jemdoc.css __site/jemdoc.css
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
