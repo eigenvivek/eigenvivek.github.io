@@ -64,7 +64,7 @@ more on this later.
 [https://github.com/eigenvivek/gershgorin This package] can be used to visualize Gershgorin discs of a matrix.
 
 ~~~
-{}{img_left}{../../assets/images/markov_gershgorin.png}{Markov Gershgorin}{300px}{300px}
+{}{img_left}{assets/images/markov_gershgorin.png}{Markov Gershgorin}{300px}{300px}
 ~~~
 
 Next, we ask what is the largest eigenvalue of a Markov matrix?
