@@ -96,7 +96,7 @@ These let us visualize the loss landscape we are trying to optimize.
 
 The final concept we will discuss with these curves is the **condition number**. The condition number is the ratio between the largest and smallest eigenvalues. When this number is small (i.e., closer to 1), the closer the ellipses are to a circle (*left*). This corresponds to a system that is more amenable to gradient descent: you can pick any direction to descent and make good progress. For a system with a large condition number (*right*), some directions are much more fruitful than others. This means gradient descent can take a very long time if you choose a poor starting point for the optimization.
 
-{}{img_left}{../../assets/images/conjgrad_ellipses.png}{Conjugate gradient ellipses}
+{}{img_left}{assets/images/conjgrad_ellipses.png}{Conjugate gradient ellipses}
 
 == Deriving the conjugate gradient method
 
