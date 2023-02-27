@@ -1,0 +1,23 @@
+vivek's site
+    about                                           [index.html]
+    cv                                              [\../assets/Vivek_Gopalakrishnan_CV.pdf]
+
+research
+    papers (full list coming soon!)                 [papers.html]
+    talks                                           [talks.html]
+
+software
+    DiffDRR                                         [\https://vivekg.dev/DiffDRR]
+
+blog
+    dual of the fourier slice theorem               [dual-fourier-slice.html]
+    the conjugate gradient method                   [conjugate-gradient.html]     
+    a fun interpretation of unitary matrices        [unitary-matrices.html]
+    graph cuts, laplacians, and $\lambda_2$         [graph-cuts.html]   
+    compressed sensing                              [compressed-sensing.html]
+    spectral properties of markov chains            [spectral-markov.html]
+    pca via the courant-fischer theorem             [pca-courant-fischer.html]
+    farewell hopkins (for now...)                   [farewell-hopkins.html]
+
+teaching
+    Neuro Data Design (JHU)                         [\https://neurodatadesign.io/]

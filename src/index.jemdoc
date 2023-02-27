@@ -1,0 +1,33 @@
+# jemdoc: menu{MENU}{index.html}, showsource
+= Vivek Gopalakrishnan
+
+~~~
+{}{img_left}{../assets/headshot.jpg}{Singapore Botanic Gardens, 2022}{300px}{300px}
+*PhD Student* \n
+[https://hst.mit.edu/ Harvard-MIT Program in Health Sciences and Technology]
+
+/Group/: [https://www.csail.mit.edu/ Computer Science and Artificial Intelligence Laboratory] \n
+/Advisor/: [https://people.csail.mit.edu/polina/ Dr. Polina Golland]
+
+== contact
+*office:* [https://whereis.mit.edu/?go=32 32 Vassar Street 32D-474]
+
+*email:* [mailto:vivekg@mit.edu vivekg@mit.edu]
+
+*github:* [https://github.com/eigenvivek eigenvivek]
+
+*google scholar:* [https://scholar.google.com/citations?user=kYGmJpAAAAAJ&hl=en profile]
+~~~
+
+~~~
+I am a second-year PhD student at MIT CSAIL advised by [https://people.csail.mit.edu/polina/ Dr. Polina Golland]. Motivated by unment clinical needs, my research develops biomedical machine learning methods that deepen our ability to understand and treat diseases.
+
+My interests lie in the following areas in medicine and machine learning:
+- *Neural fields* → spatiotemporal vessel reconstruction in neurosurgery
+- *Differentiable rendering* → fast registration for intraoperative image guidance
+- *Statistical graph theory* → biomarker discovery in network neuroscience
+- *Matrix analysis* → no biomedical applications yet, but I do love a good eigenvalue property!
+
+Before starting my PhD, I completed my BS/MS in Biomedical Engineering at Johns Hopkins University, where I worked with [https://neurodata.io/about/jovo/ Dr. Joshua Vogelstein] and [https://www.ams.jhu.edu/~priebe/ Dr. Carey Priebe] in the [https://neurodata.io/ NeuroData Lab].
+My work is supported by a [https://hst.mit.edu/academic-programs/memp/neuroimaging-training-program Neuroimaging Training Program Grant] from the National Institute of Biomedical Imaging and Bioengineering.
+~~~
