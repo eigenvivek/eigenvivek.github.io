@@ -1,9 +1,0 @@
-# jemdoc: menu{MENU}{talks.html}
-= Talks
-Academic talks and presentations.
-
-[../assets/talks/DiffDRR/index.html +DiffDRR+: Auto-Differentiable Digitally Reconstructed Radiographs in PyTorch]. \n
-*MICCAI CLIP, Singapore*, 2022.
-
-[../assets/talks/MCC/index.html Multiscale Comparative Connectomics]. \n
-*PathAI, Boston, MA*, 2021.
