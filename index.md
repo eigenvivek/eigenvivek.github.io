@@ -84,6 +84,27 @@ I am a third-year PhD candidate at MIT CSAIL advised by Dr. Polina Golland. Moti
 </div>
 
 <div class="image-text-block">
+  <img src="/assets/img/spine.gif" alt="spine.html">
+  <div>
+    <p><strong class="strong-title"><a href="https://thejns.org/focus/view/journals/neurosurg-focus/54/6/article-pE16.xml">Machine Learning for Automated and Real-Time 2D/3D Registration of the Spine using a Single Radiograph</a></strong></p>
+    <p class="author-list">
+      <a href="#">Andrew Abumoussa</a>,
+      <b>Vivek Gopalakrishnan</b>,
+      <a href="#">Benjamin Succop</a>,
+      <a href="#">Michael Galgano</a>,
+      <a href="#">Sivakumar Jaikumar</a>,
+      <a href="#">Yeuh Z. Lee</a>,
+      <a href="#">Deb A. Bhowmick</a>
+    </p>
+    <p class="journal-year"><em>Neurosurgical Focus</em>, 2023</p>
+    <div class="links">
+      <a href="https://thejns.org/focus/view/journals/neurosurg-focus/54/6/article-pE16.xml">paper</a>
+    </div>
+    <p>We use <code>DiffDRR</code> to solve a 2D/3D registration problem in image-guided spinal surgery.</p>
+  </div>
+</div>
+
+<div class="image-text-block">
   <img src="/assets/img/diffdrr.gif" alt="woowoowooooo">
   <div>
     <p><strong class="strong-title"><a href="https://arxiv.org/abs/2208.12737">Fast Auto-Differentiable Digitally Reconstructed Radiographs for Solving Inverse Problems in Intraoperative Imaging</a></strong></p>
@@ -117,7 +138,7 @@ I am a third-year PhD candidate at MIT CSAIL advised by Dr. Polina Golland. Moti
       <a href="https://github.com/eigenvivek/zlearn">project page</a> /
       <a href="https://heyzine.com/flip-book/620e87244e.html#page/31">proceedings</a> 
     </div>
-    <p>Supervised deep learning models are ubiquitiously used in drug discovery. We discover a mechanism by which these models cheat and propose an interpretability metric to quantify the level of confounding.</p>
+    <p>Supervised deep learning models are used ubiquitiously throughout image-based drug discovery. We discover a mechanism by which these models cheat and propose an interpretability metric to quantify the level of confounding.</p>
   </div>
 </div>
 
