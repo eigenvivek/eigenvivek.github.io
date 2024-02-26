@@ -73,7 +73,7 @@ I am a third-year PhD candidate at MIT CSAIL advised by Dr. Polina Golland. Moti
       <a href="https://www.neeldey.com/">Neel Dey</a>,
       <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
     </p>
-    <p class="journal-year"><em>arXiv</em>, 2023</p>
+    <p class="journal-year"><em>CVPR</em>, 2024</p>
     <div class="links">
       <a href="https://vivekg.dev/DiffPose">project page</a> / 
       <a href="https://github.com/eigenvivek/DiffPose">code</a> / 
