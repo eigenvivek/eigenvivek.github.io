@@ -5,13 +5,18 @@ profile_picture:
   alt: website picture
 ---
 
-**PhD Candidate** \\
-[Harvard-MIT Program in Health Sciences and Technology](https://hst.mit.edu/)
-
+**PhD Candidate** • [Harvard-MIT Health Sciences and Technology](https://hst.mit.edu/) \\
 *Group*: [Computer Science and Artificial Intelligence Laboratory](https://www.csail.mit.edu/) \\
 *Advisor*: [Dr. Polina Golland](https://people.csail.mit.edu/polina/)
 
-I am a third-year PhD candidate at MIT CSAIL advised by Dr. Polina Golland. Motivated by unmet clinical needs, my research develops biomedical machine learning methods that deepen our ability to understand and treat diseases ([Google Scholar](https://scholar.google.com/citations?user=kYGmJpAAAAAJ&hl=en)). 
+I am a third-year PhD candidate in Medical Engineering and Medical Physics at Harvard Medical School an MIT. Motivated by unmet clinical needs, my research develops machine learning methods that deepen our ability to understand and treat diseases.
+
+<center>
+  <a href="mailto:vivekg@mit.edu">Email</a> •
+  <a href="/assets/Vivek_Gopalakrishnan_CV.pdf">CV</a> •
+  <a href="https://scholar.google.com/citations?user=kYGmJpAAAAAJ&hl=en">Google Scholar</a> •
+  <a href="https://github.com/eigenvivek">GitHub</a>
+</center>
 
 ## Research
 
@@ -62,7 +67,7 @@ I am a third-year PhD candidate at MIT CSAIL advised by Dr. Polina Golland. Moti
 </style>
 
 
-### Differentiable Rendering + Surgery
+### Differentiable Rendering + Minimally Invasive Surgery
 
 <div class="image-text-block">
   <img src="/assets/img/diffpose.gif" alt="pelvis.html">
@@ -75,15 +80,16 @@ I am a third-year PhD candidate at MIT CSAIL advised by Dr. Polina Golland. Moti
     </p>
     <p class="journal-year"><em>CVPR</em>, 2024</p>
     <div class="links">
-      <a href="https://vivekg.dev/DiffPose">project page</a> / 
+      <a href="https://vivekg.dev/diffpose">project page</a> / 
       <a href="https://github.com/eigenvivek/DiffPose">code</a> / 
+      <a href="https://vivekg.dev/diffpose/docs">docs</a> / 
       <a href="https://arxiv.org/abs/2312.06358">paper</a>
     </div>
     <p>We use X-ray renderering to develop <code>DiffPose</code>, a self-supervised framework for differentiable 2D/3D image registration that achieves sub-millimeter registration accuracy.</p>
   </div>
 </div>
 
-<div class="image-text-block">
+<!-- <div class="image-text-block">
   <img src="/assets/img/spine.gif" alt="spine.html">
   <div>
     <p><strong class="strong-title"><a href="https://thejns.org/focus/view/journals/neurosurg-focus/54/6/article-pE16.xml">Machine Learning for Automated and Real-Time 2D/3D Registration of the Spine using a Single Radiograph</a></strong></p>
@@ -102,7 +108,7 @@ I am a third-year PhD candidate at MIT CSAIL advised by Dr. Polina Golland. Moti
     </div>
     <p>We use <code>DiffDRR</code> to solve a 2D/3D registration problem in image-guided spinal surgery.</p>
   </div>
-</div>
+</div> -->
 
 <div class="image-text-block">
   <img src="/assets/img/diffdrr.gif" alt="woowoowooooo">
@@ -115,7 +121,7 @@ I am a third-year PhD candidate at MIT CSAIL advised by Dr. Polina Golland. Moti
     <p class="journal-year"><em>MICCAI Clinical Image-based Procedures Workshop</em>, 2022</p>
     <div class="links">
       <a href="https://github.com/eigenvivek/DiffDRR">code</a> / 
-      <a href="https://vivekg.dev/DiffDRR">documentation</a> / 
+      <a href="https://vivekg.dev/DiffDRR">docs</a> / 
       <a href="https://arxiv.org/abs/2208.12737">paper</a>
     </div>
     <p>We present <code>DiffDRR</code>, a differentiable X-ray renderer that can be used to solve inverse problems in X-ray imaging with deep learning (e.g., registration or reconstruction).</p>
