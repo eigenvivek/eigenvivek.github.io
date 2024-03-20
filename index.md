@@ -144,7 +144,7 @@ I am a third-year PhD candidate in Medical Engineering and Medical Physics at Ha
       <a href="https://github.com/eigenvivek/zlearn">project page</a> /
       <a href="https://heyzine.com/flip-book/620e87244e.html#page/31">proceedings</a> 
     </div>
-    <p>Supervised deep learning models are used ubiquitiously throughout image-based drug discovery. We discover a mechanism by which these models cheat and propose an interpretability metric to quantify the level of confounding.</p>
+    <p>Supervised deep learning models are used ubiquitously throughout image-based drug discovery. We discover a mechanism by which these models cheat and propose an interpretability metric to quantify the level of confounding.</p>
   </div>
 </div>
 
