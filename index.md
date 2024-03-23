@@ -9,7 +9,7 @@ profile_picture:
 *Group*: [Computer Science and Artificial Intelligence Laboratory](https://www.csail.mit.edu/) \\
 *Advisor*: [Dr. Polina Golland](https://people.csail.mit.edu/polina/)
 
-I am a third-year PhD candidate in Medical Engineering and Medical Physics at Harvard Medical School an MIT. Motivated by unmet clinical needs, my research develops machine learning methods that deepen our ability to understand and treat diseases.
+I am a third-year PhD candidate in Medical Engineering and Medical Physics at MIT. Motivated by unmet clinical needs, my research develops machine learning methods that deepen our ability to understand and treat diseases.
 
 <center>
   <a href="mailto:vivekg@mit.edu">Email</a> •
