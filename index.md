@@ -80,9 +80,9 @@ I am a third-year PhD candidate in Medical Engineering and Medical Physics at MI
     </p>
     <p class="journal-year"><em>CVPR</em>, 2024</p>
     <div class="links">
-      <a href="https://vivekg.dev/diffpose">project page</a> / 
+      <a href="https://vivekg.dev/DiffPose">project page</a> / 
       <a href="https://github.com/eigenvivek/DiffPose">code</a> / 
-      <a href="https://vivekg.dev/diffpose/docs">docs</a> / 
+      <a href="https://vivekg.dev/DiffPose/docs">docs</a> / 
       <a href="https://arxiv.org/abs/2312.06358">paper</a>
     </div>
     <p>We use X-ray renderering to develop <code>DiffPose</code>, a self-supervised framework for differentiable 2D/3D image registration that achieves sub-millimeter registration accuracy.</p>
