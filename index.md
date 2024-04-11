@@ -139,6 +139,7 @@ I am a third-year PhD candidate in Medical Engineering and Medical Physics at MI
       <a href="https://www.linkedin.com/in/jingzhe-ma">Jingzhe Ma</a>,
       <a href="https://scholar.google.com/citations?user=0DsebPAAAAAJ">Zhiyong Xie</a>
     </p>
+    <p class="journal-year"><em>CVPRW</em>, 2024</p>
     <p class="journal-year"><em>Society of Biomolecular Imaging and Informatics</em>, 2023 <b>(President's Innovation Award)</b></p>
     <div class="links">
       <a href="https://github.com/eigenvivek/zlearn">project page</a> /
