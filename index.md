@@ -9,7 +9,7 @@ profile_picture:
 *Group*: [Computer Science and Artificial Intelligence Laboratory](https://www.csail.mit.edu/) \\
 *Advisor*: [Dr. Polina Golland](https://people.csail.mit.edu/polina/)
 
-I am a third-year PhD candidate in Medical Engineering and Medical Physics at MIT. Motivated by unmet clinical needs, my research develops machine learning methods that deepen our ability to understand and treat diseases.
+I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology, advised by Polina Golland. My research focuses on developing computer vision models to extract crucial 3D information from 2D medical imaging, aiming to advance diagnostics, image-guided interventions, and surgical robotics.
 
 <center>
   <a href="mailto:vivekg@mit.edu">Email</a> •
@@ -154,7 +154,7 @@ I am a third-year PhD candidate in Medical Engineering and Medical Physics at MI
 <div class="image-text-block">
   <img src="/assets/img/corpus-callosum.png" alt="corpus callosum">
   <div>
-    <p><strong class="strong-title"><a href="https://arxiv.org/abs/2011.14990">Multiscale Comparative Connectomics</a></strong></p>
+    <p><strong class="strong-title"><a href="https://doi.org/10.1162/IMAG.a.2">Multiscale Comparative Connectomics</a></strong></p>
     <p class="author-list">
       <b>Vivek Gopalakrishnan</b>,
       <a href="https://j1c.me/">Jaewon Chung</a>,
@@ -167,10 +167,10 @@ I am a third-year PhD candidate in Medical Engineering and Medical Physics at MI
       <a href="https://www.ams.jhu.edu/~priebe/">Carey E. Priebe</a>,
       <a href="https://jovo.me/">Joushua T. Vogelstein</a>
     </p>
-    <p class="journal-year"><em>arXiv</em>, 2021</p>
+    <p class="journal-year"><em>Imaging Neuroscience</em>, 2025</p>
     <div class="links">
       <a href="https://github.com/neurodata/MCC">code</a> /
-      <a href="https://arxiv.org/abs/2011.14990">paper</a>
+      <a href="https://doi.org/10.1162/IMAG.a.2">paper</a>
     </div>
     <p>
     We introduce a set of multiscale hypothesis tests to facilitate the robust and reproducible discovery of hierarchical brain structures that vary in relation with phenotypic profiles.
