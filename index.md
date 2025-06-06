@@ -70,6 +70,49 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
 ### Differentiable Rendering + Minimally Invasive Surgery
 
 <div class="image-text-block">
+  <img src="/assets/img/polypose.png" alt="polypose">
+  <div>
+    <p><strong class="strong-title"><a href="https://arxiv.org/abs/2505.19256">PolyPose: Localizing Deformable Anatomy in 3D from Sparse 2D X-ray Images using Polyrigid Transforms</a></strong></p>
+    <p class="author-list">
+      <b>Vivek Gopalakrishnan</b>,
+      <a href="https://www.neeldey.com/">Neel Dey</a>,
+      <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
+    </p>
+    <p class="journal-year"><em>arXiv</em>, 2025</p>
+    <div class="links">
+      <a href="https://github.com/eigenvivek/polypose">code</a> / 
+      <a href="https://arxiv.org/abs/2505.19256">paper</a>
+    </div>
+    <p><code>PolyPose</code> is a fully deformable 2D/3D registration framework that accurately solves highly ill-constrained sparse-view and limited-angle registration with polyrigid transforms.</p>
+  </div>
+</div>
+
+<div class="image-text-block">
+  <img src="/assets/img/xvr.png" alt="xvr">
+  <div>
+    <p><strong class="strong-title"><a href="https://arxiv.org/abs/2503.16309">Rapid Patient-Specific Neural Networks for Intraoperative X-ray to Volume Registration</a></strong></p>
+    <p class="author-list">
+      <b>Vivek Gopalakrishnan</b>,
+      <a href="https://www.neeldey.com/">Neel Dey</a>,
+      <a href="https://www.researchgate.net/profile/David-Chlorogiannis">David-Dimitris Chlorogiannis</a>,
+      <a href="https://www.linkedin.com/in/androwis">Andrew Abumoussa</a>,
+      Anna M. Larson,
+      <a href="https://www.childrenshospital.org/directory/darren-b-orbach">Darren B. Orbach</a>,
+      <a href="https://golbylab.bwh.harvard.edu/sarah-frisken-phd/">Sarah Frisken</a>,
+      <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
+    </p>
+    <p class="journal-year"><em>arXiv</em>, 2025</p>
+    <div class="links">
+      <a href="https://xvr.csail.mit.edu">project page</a> / 
+      <a href="https://github.com/eigenvivek/xvr">code</a> / 
+      <a href="https://github.com/eigenvivek/xvr#usage">docs</a> / 
+      <a href="https://arxiv.org/abs/2503.16309">paper</a>
+    </div>
+    <p>We present <code>xvr</code>, a CLI/API for training patient-specific 2D/3D registration in models in 5 minutes (100x faster than <code>DiffPose</code>).</p>
+  </div>
+</div>
+
+<div class="image-text-block">
   <img src="/assets/img/diffpose.gif" alt="pelvis.html">
   <div>
     <p><strong class="strong-title"><a href="https://arxiv.org/abs/2312.06358">Intraoperative 2D/3D Image Registration via Differentiable X-ray Rendering</a></strong></p>
@@ -82,7 +125,6 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
     <div class="links">
       <a href="https://vivekg.dev/DiffPose">project page</a> / 
       <a href="https://github.com/eigenvivek/DiffPose">code</a> / 
-      <a href="https://vivekg.dev/DiffPose/docs">docs</a> / 
       <a href="https://arxiv.org/abs/2312.06358">paper</a>
     </div>
     <p>We use X-ray renderering to develop <code>DiffPose</code>, a self-supervised framework for differentiable 2D/3D image registration that achieves sub-millimeter registration accuracy.</p>
