@@ -81,7 +81,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
     <p class="journal-year"><em>arXiv</em>, 2025</p>
     <div class="links">
       <a href="https://github.com/eigenvivek/polypose">code</a> / 
-      <a href="https://arxiv.org/abs/2505.19256">paper</a>
+      <a href="/assets/papers/polypose.pdf">paper</a>
     </div>
     <p><code>PolyPose</code> is a fully deformable 2D/3D registration framework that accurately solves highly ill-constrained sparse-view and limited-angle registration with polyrigid transforms.</p>
   </div>
