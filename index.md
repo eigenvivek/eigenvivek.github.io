@@ -9,7 +9,7 @@ profile_picture:
 *Group*: [Computer Science and Artificial Intelligence Laboratory](https://www.csail.mit.edu/) \\
 *Advisor*: [Dr. Polina Golland](https://people.csail.mit.edu/polina/)
 
-I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology, advised by Polina Golland. My research combines computer vision and medical physics to develop spatial models that can extract quantitative 3D/4D information from widely used 2D medical modalities, such as X-ray and ultrasound. My work uses these models to solve unmet clinical needs in diagnostics, image-guided interventions, and surgical robotics.
+I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology, advised by Polina Golland. My research combines computer vision and medical physics to develop spatial models to extract quantitative 3D/4D information from widely used 2D medical modalities (e.g., X-ray and ultrasound). My work uses these models to solve unmet clinical needs in diagnostics, image-guided interventions, and surgical robotics.
 
 <center>
   <a href="mailto:vivekg@mit.edu">Email</a> •
@@ -96,7 +96,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
       <a href="https://www.neeldey.com/">Neel Dey</a>,
       <a href="https://www.researchgate.net/profile/David-Chlorogiannis">David-Dimitris Chlorogiannis</a>,
       <a href="https://www.linkedin.com/in/androwis">Andrew Abumoussa</a>,
-      Anna M. Larson,
+      <a href="https://www.shrinerschildrens.org/en/our-care-providers/l/anna-m-larson-md-78612">Anna M. Larson</a>,
       <a href="https://www.childrenshospital.org/directory/darren-b-orbach">Darren B. Orbach</a>,
       <a href="https://golbylab.bwh.harvard.edu/sarah-frisken-phd/">Sarah Frisken</a>,
       <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
