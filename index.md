@@ -9,7 +9,7 @@ profile_picture:
 *Group*: [Computer Science and Artificial Intelligence Laboratory](https://www.csail.mit.edu/) \\
 *Advisor*: [Dr. Polina Golland](https://people.csail.mit.edu/polina/)
 
-I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology, advised by Polina Golland. My research focuses on developing computer vision models to extract crucial 3D information from 2D medical imaging, aiming to advance diagnostics, image-guided interventions, and surgical robotics.
+I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology, advised by Polina Golland. My research combines computer vision and medical physics to develop spatial models that can extract quantitative 3D/4D information from widely used 2D medical modalities, such as X-ray and ultrasound. My work uses these models to solve unmet clinical needs in diagnostics, image-guided interventions, and surgical robotics.
 
 <center>
   <a href="mailto:vivekg@mit.edu">Email</a> •
@@ -78,7 +78,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
       <a href="https://www.neeldey.com/">Neel Dey</a>,
       <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
     </p>
-    <p class="journal-year"><em>arXiv</em>, 2025</p>
+    <p class="journal-year"><em>NeurIPS</em>, 2025</p>
     <div class="links">
       <a href="https://github.com/eigenvivek/polypose">code</a> / 
       <a href="/assets/papers/polypose.pdf">paper</a>
