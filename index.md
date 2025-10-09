@@ -70,7 +70,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
 ### Differentiable Rendering + Minimally Invasive Surgery
 
 <div class="image-text-block">
-  <img src="/assets/img/polypose.png" alt="polypose">
+  <img src="/assets/img/polypose.webp" alt="polypose">
   <div>
     <p><strong class="strong-title"><a href="https://arxiv.org/abs/2505.19256">PolyPose: Deformable 2D/3D Registration via Polyrigid Transformations</a></strong></p>
     <p class="author-list">
