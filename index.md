@@ -72,7 +72,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
 <div class="image-text-block">
   <img src="/assets/img/polypose.png" alt="polypose">
   <div>
-    <p><strong class="strong-title"><a href="https://arxiv.org/abs/2505.19256">PolyPose: Localizing Deformable Anatomy in 3D from Sparse 2D X-ray Images using Polyrigid Transforms</a></strong></p>
+    <p><strong class="strong-title"><a href="https://arxiv.org/abs/2505.19256">PolyPose: Deformable 2D/3D Registration via Polyrigid Transformations</a></strong></p>
     <p class="author-list">
       <b>Vivek Gopalakrishnan</b>,
       <a href="https://www.neeldey.com/">Neel Dey</a>,
@@ -80,6 +80,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
     </p>
     <p class="journal-year"><em>NeurIPS</em>, 2025</p>
     <div class="links">
+      <a href="https://polypose.csail.mit.edu">project page</a> / 
       <a href="https://github.com/eigenvivek/polypose">code</a> / 
       <a href="/assets/papers/polypose.pdf">paper</a>
     </div>
