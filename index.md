@@ -70,6 +70,32 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
 ### Differentiable Rendering + Minimally Invasive Surgery
 
 <div class="image-text-block">
+  <img src="/assets/img/xvr.png" alt="xvr">
+  <div>
+    <p><strong class="strong-title"><a href="https://arxiv.org/abs/2503.16309">Rapid Patient-Specific Neural Networks for Intraoperative X-ray to Volume Registration</a></strong></p>
+    <p class="author-list">
+      <b>Vivek Gopalakrishnan</b>,
+      <a href="https://www.researchgate.net/profile/David-Chlorogiannis">David-Dimitris Chlorogiannis</a>,
+      <a href="https://www.linkedin.com/in/androwis">Andrew Abumoussa</a>,
+      <a href="https://www.shrinerschildrens.org/en/our-care-providers/l/anna-m-larson-md-78612">Anna M. Larson</a>,
+      <a href="https://spl.harvard.edu/haouchine">Nazim Haouchine</a>,
+      <a href="https://www.childrenshospital.org/directory/darren-b-orbach">Darren B. Orbach</a>,
+      <a href="https://golbylab.bwh.harvard.edu/sarah-frisken-phd/">Sarah Frisken</a>,
+      <a href="https://www.neeldey.com/">Neel Dey</a>,
+      <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
+    </p>
+    <p class="journal-year"><em>Nature (accepted in principal)</em>, 2026</p>
+    <div class="links">
+      <a href="https://xvr.csail.mit.edu">project page</a> / 
+      <a href="https://github.com/eigenvivek/xvr">code</a> / 
+      <a href="https://github.com/eigenvivek/xvr#usage">docs</a> / 
+      <a href="https://arxiv.org/abs/2503.16309">paper</a>
+    </div>
+    <p>We present <code>xvr</code>, a CLI/API for training patient-specific 2D/3D registration in models in 5 minutes (100x faster than <code>DiffPose</code>).</p>
+  </div>
+</div>
+
+<div class="image-text-block">
   <img src="/assets/img/polypose.webp" alt="polypose">
   <div>
     <p><strong class="strong-title"><a href="https://arxiv.org/abs/2505.19256">PolyPose: Deformable 2D/3D Registration via Polyrigid Transformations</a></strong></p>
@@ -85,31 +111,6 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
       <a href="/assets/papers/polypose.pdf">paper</a>
     </div>
     <p><code>PolyPose</code> is a fully deformable 2D/3D registration framework that accurately solves highly ill-constrained sparse-view and limited-angle registration with polyrigid transforms.</p>
-  </div>
-</div>
-
-<div class="image-text-block">
-  <img src="/assets/img/xvr.png" alt="xvr">
-  <div>
-    <p><strong class="strong-title"><a href="https://arxiv.org/abs/2503.16309">Rapid Patient-Specific Neural Networks for Intraoperative X-ray to Volume Registration</a></strong></p>
-    <p class="author-list">
-      <b>Vivek Gopalakrishnan</b>,
-      <a href="https://www.neeldey.com/">Neel Dey</a>,
-      <a href="https://www.researchgate.net/profile/David-Chlorogiannis">David-Dimitris Chlorogiannis</a>,
-      <a href="https://www.linkedin.com/in/androwis">Andrew Abumoussa</a>,
-      <a href="https://www.shrinerschildrens.org/en/our-care-providers/l/anna-m-larson-md-78612">Anna M. Larson</a>,
-      <a href="https://www.childrenshospital.org/directory/darren-b-orbach">Darren B. Orbach</a>,
-      <a href="https://golbylab.bwh.harvard.edu/sarah-frisken-phd/">Sarah Frisken</a>,
-      <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
-    </p>
-    <p class="journal-year"><em>arXiv</em>, 2025</p>
-    <div class="links">
-      <a href="https://xvr.csail.mit.edu">project page</a> / 
-      <a href="https://github.com/eigenvivek/xvr">code</a> / 
-      <a href="https://github.com/eigenvivek/xvr#usage">docs</a> / 
-      <a href="https://arxiv.org/abs/2503.16309">paper</a>
-    </div>
-    <p>We present <code>xvr</code>, a CLI/API for training patient-specific 2D/3D registration in models in 5 minutes (100x faster than <code>DiffPose</code>).</p>
   </div>
 </div>
 
