@@ -84,7 +84,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
       <a href="https://www.neeldey.com/">Neel Dey</a>,
       <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
     </p>
-    <p class="journal-year"><em>Nature (accepted in principal)</em>, 2026</p>
+    <p class="journal-year"><em>Nature (to appear)</em>, 2026</p>
     <div class="links">
       <a href="https://xvr.csail.mit.edu">project page</a> / 
       <a href="https://github.com/eigenvivek/xvr">code</a> / 
