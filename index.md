@@ -5,11 +5,15 @@ profile_picture:
   alt: website picture
 ---
 
-**PhD Candidate** • [Harvard-MIT Health Sciences and Technology](https://hst.mit.edu/) \\
+**Postdoctoral Fellow** • Massachusetts Institute of Technology \\
 *Group*: [Computer Science and Artificial Intelligence Laboratory](https://www.csail.mit.edu/) \\
-*Advisor*: [Dr. Polina Golland](https://people.csail.mit.edu/polina/)
+*Advisors*: [Dr. John Guttag](https://people.csail.mit.edu/guttag/) and [Dr. Adrian Dalca](https://www.mit.edu/~adalca/)
 
-I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology, advised by Polina Golland. My research combines computer vision and medical physics to develop spatial models to extract quantitative 3D/4D information from widely used 2D medical modalities (e.g., X-ray and ultrasound). My work uses these models to solve unmet clinical needs in diagnostics, image-guided interventions, and surgical robotics.
+I am a METEOR postdoctoral fellow at MIT CSAIL. Previously, I completed my PhD at the Harvard-MIT Program in Health Sciences and Technology, advised by [Dr. Polina Golland](https://people.csail.mit.edu/polina/). 
+
+My research combines computer vision and medical physics to develop spatial models that extract quantitative 3D/4D information from widely used 2D medical modalities (e.g., X-ray and ultrasound). I enjoy collaborating with clinical and industry partners to apply these models to unmet needs in diagnostics, image-guided interventions, and surgical robotics.
+
+**I am on the academic job market this year for faculty positions in BME, EECS, and related departments.**
 
 <center>
   <a href="mailto:vivekg@mit.edu">Email</a> •
