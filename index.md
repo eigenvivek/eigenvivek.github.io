@@ -5,11 +5,15 @@ profile_picture:
   alt: website picture
 ---
 
-**PhD Candidate** • [Harvard-MIT Health Sciences and Technology](https://hst.mit.edu/) \\
+**Postdoctoral Fellow** • Massachusetts Institute of Technology \\
 *Group*: [Computer Science and Artificial Intelligence Laboratory](https://www.csail.mit.edu/) \\
-*Advisor*: [Dr. Polina Golland](https://people.csail.mit.edu/polina/)
+*Advisors*: [Dr. John Guttag](https://people.csail.mit.edu/guttag/) and [Dr. Adrian Dalca](https://www.mit.edu/~adalca/)
 
-I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology, advised by Polina Golland. My research combines computer vision and medical physics to develop spatial models to extract quantitative 3D/4D information from widely used 2D medical modalities (e.g., X-ray and ultrasound). My work uses these models to solve unmet clinical needs in diagnostics, image-guided interventions, and surgical robotics.
+I am a METEOR postdoctoral fellow at MIT CSAIL. Previously, I completed my PhD at the Harvard-MIT Program in Health Sciences and Technology, advised by [Dr. Polina Golland](https://people.csail.mit.edu/polina/). 
+
+My research combines computer vision and medical physics to develop spatial models that extract quantitative 3D/4D information from widely used 2D medical modalities (e.g., X-ray and ultrasound). I enjoy collaborating with clinical and industry partners to apply these models to unmet needs in diagnostics, image-guided interventions, and surgical robotics.
+
+**I am on the academic job market this year for faculty positions in BME, EECS, and related departments.**
 
 <center>
   <a href="mailto:vivekg@mit.edu">Email</a> •
@@ -72,7 +76,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
 <div class="image-text-block">
   <img src="/assets/img/xvr.png" alt="xvr">
   <div>
-    <p><strong class="strong-title"><a href="https://arxiv.org/abs/2503.16309">Rapid Patient-Specific Neural Networks for Intraoperative X-ray to Volume Registration</a></strong></p>
+    <p><strong class="strong-title"><a href="https://doi.org/10.1038/s41586-026-11045-x">Rapid Patient-Specific Neural Networks for X-ray to Volume Registration</a></strong></p>
     <p class="author-list">
       <b>Vivek Gopalakrishnan</b>,
       <a href="https://www.researchgate.net/profile/David-Chlorogiannis">David-Dimitris Chlorogiannis</a>,
@@ -84,12 +88,13 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
       <a href="https://www.neeldey.com/">Neel Dey</a>,
       <a href="https://people.csail.mit.edu/polina">Polina Golland</a>
     </p>
-    <p class="journal-year"><em>Nature (to appear)</em>, 2026</p>
+    <p class="journal-year"><em>Nature</em>, 2026</p>
     <div class="links">
       <a href="https://xvr.csail.mit.edu">project page</a> / 
+      <a href="https://news.mit.edu/2026/new-ai-technique-could-make-minimally-invasive-surgeries-safer-more-precise-0916">press</a> /
       <a href="https://github.com/eigenvivek/xvr">code</a> / 
       <a href="https://github.com/eigenvivek/xvr#usage">docs</a> / 
-      <a href="https://arxiv.org/abs/2503.16309">paper</a>
+      <a href="https://doi.org/10.1038/s41586-026-11045-x">paper</a>
     </div>
     <p>We present <code>xvr</code>, a CLI/API for training patient-specific 2D/3D registration in models in 5 minutes (100x faster than <code>DiffPose</code>).</p>
   </div>
@@ -107,6 +112,7 @@ I am a PhD student at the Harvard-MIT Program in Health Sciences and Technology,
     <p class="journal-year"><em>NeurIPS</em>, 2025</p>
     <div class="links">
       <a href="https://polypose.csail.mit.edu">project page</a> / 
+      <a href="https://betterworld.mit.edu/spectrum/issues/spring-2026/medical-engineer-draws-on-video-game-design-to-aid-doctors-in-surgery/">press</a> / 
       <a href="https://github.com/eigenvivek/polypose">code</a> / 
       <a href="/assets/papers/polypose.pdf">paper</a>
     </div>
